@@ -2,13 +2,13 @@
   "name": "jsx",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": { 
+    "compile": "./node_modules/.bin/babel src --out-dir lib"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.26.0"
+    "@babel/cli": "^7.26.4"
   }
 }
