@@ -1,3 +1,2 @@
-function greet() {
-  console.log('hello world')
-}
+/** @jsx h */
+let foo = <div id="foo">Hello!</div>; 

@@ -2,7 +2,7 @@
   "name": "jsx",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "compile": "./node_modules/.bin/babel src --out-dir lib"
   },
   "author": "",
@@ -10,5 +10,9 @@
   "description": "",
   "devDependencies": {
     "@babel/cli": "^7.26.4"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3"
   }
 }
