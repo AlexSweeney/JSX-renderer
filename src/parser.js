@@ -30,36 +30,60 @@ export function logTree(tree) {
   console.log(JSON.stringify(tree, null, 2))
 }
 
-export function makeTree(tags, tree, i = 0, stack = [], current) {
+export function makeTree(tags, tree, i = 0, stack = [], stackIndex = -1) {
   if (i === tags.length) {
     return tree;
   }
 
-  if (typeof tags[i] === 'string') {
+  const tag = tags[i];
+  const current = stack[stackIndex];
+
+  if (typeof tag === 'string') {
     if (!tree) {
-      tree = { nodeName: tags[i], children: [] };
-      return makeTree(tags, tree, i + 1, [tree], tree);
+      tree = { nodeName: tag, children: [] };
+      return makeTree(tags, tree, i + 1, [tree], stackIndex + 1);
     }
 
-    const node = { nodeName: tags[i], children: [] };
+    const node = { nodeName: tag, children: [] };
     current.children.push(node)
-    stack.unshift(current.children[0])
+    const lastChild = current.children[current.children.length - 1];
+    stack.push(lastChild)
 
-    return makeTree(tags, tree, i + 1, stack, current.children[0]);
+    return makeTree(tags, tree, i + 1, stack, stackIndex + 1);
   }
 
-  if (Array.isArray(tags[i])) {
-    const arrayNodes = tags[i].map(tag => ({
-      nodeName: tag,
-      children: []
-    }));
+  if (Array.isArray(tag)) {
+    let arrayNodes = [];
+
+    tag.forEach((tag, i) => {
+      let node;
+
+      if (typeof tag === 'string') {
+        node = {
+          nodeName: tag,
+          children: []
+        }
+
+        arrayNodes.push(node)
+      }
+
+      if (Array.isArray(tag)) {
+        node = makeTree([tag])
+
+        if (i === 0) {
+          arrayNodes[0] = node;
+        } else {
+          arrayNodes[arrayNodes.length - 1].children = node;
+        }
+      }
+    });
 
     if (!tree) {
       return arrayNodes;
     }
 
     current.children = arrayNodes;
-    return makeTree(tags, tree, i + 1, stack, stack[1]);
+    return makeTree(tags, tree, i + 1, stack, stackIndex);
   }
 }
 

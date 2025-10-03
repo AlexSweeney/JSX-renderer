@@ -44,7 +44,7 @@ describe.only('makeTree()', () => {
   describe('if passed an array of strings', () => {
     it('should return a tree of children', () => {
       const tags = ['ONE', 'TWO', 'THREE', 'FOUR'];
-      const expectedTree = {
+      const expectedResult = {
         nodeName: "ONE",
         children: [
           {
@@ -65,14 +65,14 @@ describe.only('makeTree()', () => {
       };
 
       const result = makeTree(tags);
-      expect(result).toEqual(expectedTree);
+      expect(result).toEqual(expectedResult);
     })
   })
 
   describe('if passed an array of arrays', () => {
     it('should return an array of siblings', () => {
       const tags = [['ONE', 'TWO']];
-      const expectedTree = [
+      const expectedResult = [
         {
           nodeName: "ONE",
           children: []
@@ -84,15 +84,52 @@ describe.only('makeTree()', () => {
       ];
 
       const result = makeTree(tags);
-      expect(result).toEqual(expectedTree);
+      expect(result).toEqual(expectedResult);
+    })
+  })
+
+  describe('if passed and array of matrixes', () => {
+    it('should make correct tree', () => {
+      const tags = [['ONE', ['TWO', ['THREE', 'FOUR']], 'FIVE', 'SIX']];
+      const expectedResult = [
+        {
+          nodeName: 'ONE',
+          children: [
+            {
+              nodeName: 'TWO',
+              children: [
+                {
+                  nodeName: 'THREE',
+                  children: []
+                },
+                {
+                  nodeName: 'FOUR',
+                  children: []
+                }
+              ]
+            },
+
+          ]
+        },
+        {
+          nodeName: 'FIVE',
+          children: []
+        },
+        {
+          nodeName: 'SIX',
+          children: []
+        }
+      ];
+
+      const result = makeTree(tags);
+      expect(result).toEqual(expectedResult);
     })
   })
 
   describe('if passed an array of strings and arrays', () => {
-    it('should make tree', () => {
+    it('should make correct tree', () => {
       const tags = ['ONE', 'TWO', ['THREE-A', 'THREE-B'], "FOUR"];
-
-      const expectedTree = {
+      const expectedResult = {
         nodeName: "ONE",
         children: [
           {
@@ -105,22 +142,68 @@ describe.only('makeTree()', () => {
               {
                 nodeName: "THREE-B",
                 children: [],
+              },
+              {
+                nodeName: "FOUR",
+                children: [],
               }
             ]
           },
-          {
-            nodeName: "FOUR",
-            children: [],
-          }
+
         ]
       };
 
       const result = makeTree(tags);
-      expect(result).toEqual(expectedTree);
+      expect(result).toEqual(expectedResult);
     })
   })
 
+  describe('if pass an array of strings, arrays, and matrixes', () => {
+    it('should return correct tree', () => {
+      const tags = ['ONE', 'TWO', ['THREE', ['FOUR', 'FIVE'], 'SIX'], 'SEVEN', ['EIGHT', 'NINE']];
+      const expectedResult = {
+        nodeName: 'ONE',
+        children: [{
+          nodeName: 'TWO',
+          children: [
+            {
+              nodeName: 'THREE',
+              children: [
+                {
+                  nodeName: 'FOUR',
+                  children: []
+                },
+                {
+                  nodeName: 'FIVE',
+                  children: []
+                }
+              ]
+            },
+            {
+              nodeName: 'SIX',
+              children: []
+            },
+            {
+              nodeName: 'SEVEN',
+              children: [
+                {
+                  nodeName: 'EIGHT',
+                  children: []
+                },
+                {
+                  nodeName: 'NINE',
+                  children: []
+                }
+              ]
+            }
+          ],
+        }]
+      };
 
+      const result = makeTree(tags);
+      expect(result).toEqual(expectedResult);
+    })
+  })
 })
 
 describe('addAtNode()', () => {
