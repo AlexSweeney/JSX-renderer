@@ -2,12 +2,12 @@ export function parse(string) {
   const boilerPlateTags = [
     'DOCUMENT', 'HTML', ['HEAD', 'BODY']
   ];
-  const boilerPlateTree = makeTree(boilerPlateTags);
 
+  const domTree = makeTree(boilerPlateTags);
   const bodyTags = splitTags(string);
-  const htmlTree = addAtNode(boilerPlateTree, 'BODY', bodyTags);
+  addAtNode(domTree, 'BODY', bodyTags);
 
-  return htmlTree;
+  return domTree;
 }
 
 export function addAtNode(current, targetNode, childrenToAdd) {
@@ -127,10 +127,10 @@ function getHtmlNodeChildren(string) {
     }
   })
 
-  return {
+  return [{
     nodeName: "#text",
     value
-  }
+  }];
 }
 
 function splitTags(string) {

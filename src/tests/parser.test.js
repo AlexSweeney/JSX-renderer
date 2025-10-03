@@ -1,7 +1,7 @@
-import { parse, makeTree, addAtNode, logTree } from './../parser';
+import { parse, makeTree, addAtNode } from './../parser';
 
 describe('parser', () => {
-  it('should parse strings with <h1> and <p> tags', () => {
+  it('should parse html string', () => {
     const htmlString = '<h1>Hello</h1><p>world</p>';
     const expectedResult = {
       "nodeName": "DOCUMENT",
