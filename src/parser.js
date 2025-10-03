@@ -10,22 +10,19 @@ export function parse(string) {
   return htmlTree;
 }
 
-export function addAtNode(rootTree, targetNode, childrenToAdd) {
-  let current = rootTree;
-  let nodeName = current.nodeName;
-
-  while (nodeName !== targetNode) {
-    current = current.children[0];
-    nodeName = current.nodeName;
+export function addAtNode(current, targetNode, childrenToAdd) {
+  if (current.nodeName === targetNode) {
+    current.children.push(...childrenToAdd);
   }
 
-  if (nodeName === targetNode) {
-    current.children = childrenToAdd;
-  }
+  if (current.children) {
+    for (let i = 0; i < current.children.length; i++) {
+      const child = current.children[i];
 
-  return rootTree;
+      addAtNode(child, targetNode, childrenToAdd);
+    }
+  }
 }
-
 export function logTree(tree) {
   console.log(JSON.stringify(tree, null, 2))
 }

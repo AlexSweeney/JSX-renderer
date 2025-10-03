@@ -1,4 +1,4 @@
-import { parse, makeTree, addAtNode } from './../parser';
+import { parse, makeTree, addAtNode, logTree } from './../parser';
 
 describe('parser', () => {
   it('should parse strings with <h1> and <p> tags', () => {
@@ -40,7 +40,7 @@ describe('parser', () => {
   })
 })
 
-describe.only('makeTree()', () => {
+describe('makeTree()', () => {
   describe('if passed an array of strings', () => {
     it('should return a tree of children', () => {
       const tags = ['ONE', 'TWO', 'THREE', 'FOUR'];
@@ -207,30 +207,127 @@ describe.only('makeTree()', () => {
 })
 
 describe('addAtNode()', () => {
-  it('should add content at correct node', () => {
-    const tags = [
-      { nodeName: "ONE" },
-      { nodeName: "TWO" },
-      { nodeName: "THREE" },
-      { nodeName: "FOUR" },
-    ];
-    const children = ['child-one', 'child-two'];
+  describe('when passed tree with children', () => {
+    it('should add content at correct node', () => {
+      const tree = {
+        nodeName: "ONE",
+        children: [
+          {
+            nodeName: "TWO",
+            children: [
+              {
+                nodeName: "THREE",
+                children: [
+                  {
+                    nodeName: "FOUR",
+                    children: []
+                  },
+                ]
+              },
+            ]
+          },
+        ]
+      };
+      const children = ['child-one', 'child-two'];
 
-    const expectedTree = {
-      nodeName: "ONE",
-      children: {
-        nodeName: "TWO",
-        children: {
-          nodeName: "THREE",
-          children: {
-            nodeName: "FOUR",
-            children: children,
-          }
-        }
-      }
-    };
+      const expectedResult = {
+        nodeName: "ONE",
+        children: [{
+          nodeName: "TWO",
+          children: [{
+            nodeName: "THREE",
+            children: [{
+              nodeName: "FOUR",
+              children: children,
+            }]
+          }]
+        }]
+      };
 
-    const result = addAtNode(expectedTree, "FOUR", children);
-    expect(result).toEqual(expectedTree)
+      addAtNode(tree, "FOUR", children);
+      expect(tree).toEqual(expectedResult)
+    })
+  })
+
+  describe('when passed tree with siblings', () => {
+    it('should add content at correct node', () => {
+      const tree = {
+        nodeName: "ONE",
+        children: [
+          {
+            nodeName: "TWO",
+            children: []
+          },
+          {
+            nodeName: "THREE",
+            children: []
+          },
+        ]
+      };
+      const children = ['child-one', 'child-two'];
+
+      const expectedResult = {
+        nodeName: "ONE",
+        children: [
+          {
+            nodeName: "TWO",
+            children: []
+          },
+          {
+            nodeName: "THREE",
+            children: children
+          },
+        ]
+      };
+
+      addAtNode(tree, 'THREE', children)
+      expect(tree).toEqual(expectedResult);
+    })
+  })
+
+  describe('when passed tree with children and siblings', () => {
+    it('should add content at correct node', () => {
+      const tree = {
+        nodeName: "ONE",
+        children: [
+          {
+            nodeName: "TWO",
+            children: []
+          },
+          {
+            nodeName: "THREE",
+            children: [
+              {
+                nodeName: "FOUR",
+                children: [],
+              }
+            ]
+          },
+        ]
+      };
+      const children = ['child-one', 'child-two'];
+
+      const expectedResult = {
+        nodeName: "ONE",
+        children: [
+          {
+            nodeName: "TWO",
+            children: []
+          },
+          {
+            nodeName: "THREE",
+            children: [
+              {
+                nodeName: "FOUR",
+                children: children
+              }
+            ]
+          },
+        ]
+      };
+
+      addAtNode(tree, 'FOUR', children)
+      expect(tree).toEqual(expectedResult);
+    })
   })
 })
