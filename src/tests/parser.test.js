@@ -1,7 +1,7 @@
 import { parse, makeTree, addAtNode } from './../parser';
 
 describe('parser', () => {
-  it('should parse html string', () => {
+  it('should parse a html string', () => {
     const htmlString = '<h1>Hello</h1><p>world</p>';
     const expectedResult = {
       "nodeName": "DOCUMENT",
