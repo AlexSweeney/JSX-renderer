@@ -1,16 +1,36 @@
 import React from 'react';
 import { Button as HeadlessButton } from '@headlessui/react'
 
-export interface ButtonProps {
-  color?: 'primary' | 'secondary' | 'contrast',
-  variant?: 'character',
-  character?: string;
+type CharacterVariantProps = {
+  color?: 'primary' | 'secondary' | 'contrast';
+  variant: 'character';
+  character: string;
   children?: never;
 }
 
+type DeleteVaraintProps = {
+  color?: 'primary' | 'secondary' | 'contrast';
+  variant: 'delete';
+  character?: never;
+  children?: never;
+}
+
+export type ButtonProps =
+  | CharacterVariantProps
+  | DeleteVaraintProps;
+
 export const Button = ({ character, color = 'primary', variant = 'character' }: ButtonProps) => {
-  const baseClasses = 'h-[40px] w-[40px] rounded transition-colors duration-200 font-medium active:ring-2 ring-highlight';
-  const display = variant === 'character' ? character?.split('')[0] : '';
+  const sizeClasses = {
+    character: 'h-[2.5rem] w-[2.5rem]',
+    delete: 'h-[2.5rem] w-[5rem]',
+  };
+
+  const baseClasses = 'rounded transition-colors duration-200 font-medium active:ring-2 ring-highlight';
+
+  const display = {
+    character: character?.split('')[0] ?? '',
+    delete: 'delete'
+  };
 
   const colorClasses = {
     primary: 'bg-primary hover:bg-primary-hover text-text',
@@ -20,9 +40,9 @@ export const Button = ({ character, color = 'primary', variant = 'character' }: 
 
   return (
     <HeadlessButton
-      className={`${baseClasses} ${colorClasses[color]}`}
+      className={`${baseClasses} ${sizeClasses[variant]} ${colorClasses[color]}`}
     >
-      {display}
+      {display[variant]}
     </HeadlessButton>
   )
 }

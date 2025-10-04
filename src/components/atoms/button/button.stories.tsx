@@ -22,3 +22,13 @@ export const Character = {
     character: 'a',
   },
 };
+
+export const Delete = {
+  args: {
+    variant: 'delete',
+    color: 'primary',
+  },
+  argTypes: {
+    character: { table: { disable: true } },
+  },
+}

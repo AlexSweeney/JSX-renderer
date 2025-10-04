@@ -5,7 +5,7 @@ add copilot
 * button components 
 - character x 
 - space bar
-- delete 
+- delete  x
 - html tag
 * keyboard component
 * input display component
