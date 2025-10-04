@@ -1,39 +1,28 @@
 import { Button } from './button';
 
 export default {
-  title: 'Example/Button',
+  title: 'Atoms/Button',
   component: Button,
   parameters: {
     layout: 'centered',
   },
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'danger'],
+      options: ['character'],
+      default: 'character',
     },
-    children: {
-      control: { type: 'text' },
-    },
+    children: { table: { disable: true } },
   },
 };
 
-export const Primary = {
+export const Character = {
   args: {
-    variant: 'primary',
-    children: 'Primary Button',
-  },
-};
-
-export const Secondary = {
-  args: {
-    variant: 'secondary',
-    children: 'Secondary Button',
-  },
-};
-
-export const Danger = {
-  args: {
-    variant: 'danger',
-    children: 'Danger Button',
+    variant: 'character',
+    color: 'primary',
+    character: 'a',
   },
 };

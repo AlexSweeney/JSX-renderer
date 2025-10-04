@@ -1,20 +1,28 @@
 import React from 'react';
+import { Button as HeadlessButton } from '@headlessui/react'
 
-export const Button = ({ children = 'This is a button', variant = 'primary', ...props }) => {
-  const baseClasses = 'px-4 py-2 rounded font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+export interface ButtonProps {
+  color?: 'primary' | 'secondary' | 'contrast',
+  variant?: 'character',
+  character?: string;
+  children?: never;
+}
 
-  const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+export const Button = ({ character, color = 'primary', variant = 'character' }: ButtonProps) => {
+  const baseClasses = 'h-[40px] w-[40px] rounded transition-colors duration-200 font-medium active:ring-2 ring-highlight';
+  const display = variant === 'character' ? character?.split('')[0] : '';
+
+  const colorClasses = {
+    primary: 'bg-primary hover:bg-primary-hover text-text',
+    secondary: 'bg-secondary hover:bg-secondary-hover text-text-contrast',
+    contrast: 'bg-contrast hover:bg-contrast-hover text-text-dark',
   };
 
   return (
-    <button
-      className={`${baseClasses} ${variantClasses[variant] || variantClasses.primary}`}
-      {...props}
+    <HeadlessButton
+      className={`${baseClasses} ${colorClasses[color]}`}
     >
-      {children}
-    </button>
+      {display}
+    </HeadlessButton>
   )
 }

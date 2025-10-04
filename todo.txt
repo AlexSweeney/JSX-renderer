@@ -1,7 +1,12 @@
 storybook hot reload
+add copilot
 
 - interace -> input html tags and text
-* button components
+* button components 
+- character x 
+- space bar
+- delete 
+- html tag
 * keyboard component
 * input display component
 * output display component
@@ -15,3 +20,4 @@ storybook hot reload
 
 - update readme
 
+- live color theme update
