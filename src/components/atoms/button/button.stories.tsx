@@ -25,8 +25,8 @@ export default {
 export const Character = {
   args: {
     variant: 'character',
-    color: 'primary',
     character: 'a',
+    color: 'primary',
   },
 };
 
@@ -35,9 +35,6 @@ export const Delete = {
     variant: 'delete',
     color: 'secondary',
   },
-  argTypes: {
-    character: { table: { disable: true } },
-  },
 }
 
 export const Space = {
@@ -45,7 +42,12 @@ export const Space = {
     variant: 'space',
     color: 'secondary',
   },
-  argTypes: {
-    character: { table: { disable: true } },
+}
+
+export const Html = {
+  args: {
+    variant: 'html',
+    text: '<p>',
+    color: 'secondary',
   },
 }

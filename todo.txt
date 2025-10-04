@@ -1,12 +1,7 @@
 storybook hot reload
 add copilot
 
-- interace -> input html tags and text
-* button components 
-- character x 
-- space bar
-- delete  x
-- html tag
+- interace -> input html tags and text 
 * keyboard component
 * input display component
 * output display component

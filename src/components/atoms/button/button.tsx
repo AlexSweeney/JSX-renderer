@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button as HeadlessButton } from '@headlessui/react'
 
-type ColorsType = 'primary' | 'secondary' | 'contrast';
+// ======== Types
+type ColorsType = 'primary' | 'secondary' | 'contrast' | 'html';
 
 type CharacterVariantProps = {
   color?: ColorsType;
   variant: 'character';
   character: string;
   children?: never;
+  text?: never;
 }
 
 type DeleteVaraintProps = {
@@ -15,6 +17,7 @@ type DeleteVaraintProps = {
   variant: 'delete';
   character?: never;
   children?: never;
+  text?: never;
 }
 
 type SpaceVariantProps = {
@@ -22,29 +25,49 @@ type SpaceVariantProps = {
   variant: 'space';
   character?: never;
   children?: never;
+  text?: never;
+}
+
+type HtmlVariantProps = {
+  color?: ColorsType;
+  variant: 'space';
+  character?: never;
+  text?: string;
 }
 
 export type ButtonProps =
   | CharacterVariantProps
   | DeleteVaraintProps
-  | SpaceVariantProps;
+  | SpaceVariantProps
+  | HtmlVariantProps;
 
-export const Button = ({ character, color, variant = 'character' }: ButtonProps) => {
-  const defaultColors = {
-    character: 'primary',
-    secondary: 'secondary',
-    space: 'secondary',
-  };
+// ======== Colors
+const defaultColors = {
+  character: 'primary',
+  secondary: 'secondary',
+  space: 'secondary',
+  html: 'secondary',
+};
 
+const colorClasses = {
+  primary: 'bg-primary hover:bg-primary-hover text-text',
+  secondary: 'bg-secondary hover:bg-secondary-hover text-text-contrast',
+  contrast: 'bg-contrast hover:bg-contrast-hover text-text-dark',
+};
+
+// ======== Sizes
+const buttonHeight = 'h-[2.5rem]';
+const sizeClasses = {
+  character: `${buttonHeight} w-[2.5rem]`,
+  delete: `${buttonHeight} w-[5rem]`,
+  space: `${buttonHeight} w-[15rem]`,
+  html: `${buttonHeight} w-[3.5rem]`
+};
+
+export const Button = ({ character, text, color, variant = 'character' }: ButtonProps) => {
   if (!color) {
-    color = defaultColors[variant]
+    color = defaultColors[variant];
   }
-
-  const sizeClasses = {
-    character: 'h-[2.5rem] w-[2.5rem]',
-    delete: 'h-[2.5rem] w-[5rem]',
-    space: 'h-[2.5rem] w-[15rem]'
-  };
 
   const baseClasses = 'rounded transition-colors duration-200 font-medium active:ring-2 ring-highlight';
 
@@ -52,12 +75,7 @@ export const Button = ({ character, color, variant = 'character' }: ButtonProps)
     character: character?.split('')[0] ?? '',
     delete: 'delete',
     space: '',
-  };
-
-  const colorClasses = {
-    primary: 'bg-primary hover:bg-primary-hover text-text',
-    secondary: 'bg-secondary hover:bg-secondary-hover text-text-contrast',
-    contrast: 'bg-contrast hover:bg-contrast-hover text-text-dark',
+    html: text ?? '',
   };
 
   return (
