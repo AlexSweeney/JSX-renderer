@@ -9,7 +9,14 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
+  args: {
+    color: 'primary',
+  },
   argTypes: {
+    color: {
+      options: ['primary', 'secondary', 'contrast'],
+      control: { type: 'radio' },
+    },
     variant: { table: { disable: true } },
     children: { table: { disable: true } },
   },
@@ -26,7 +33,17 @@ export const Character = {
 export const Delete = {
   args: {
     variant: 'delete',
-    color: 'primary',
+    color: 'secondary',
+  },
+  argTypes: {
+    character: { table: { disable: true } },
+  },
+}
+
+export const Space = {
+  args: {
+    variant: 'space',
+    color: 'secondary',
   },
   argTypes: {
     character: { table: { disable: true } },
