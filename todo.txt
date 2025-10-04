@@ -1,0 +1,17 @@
+storybook hot reload
+
+- interace -> input html tags and text
+* button components
+* keyboard component
+* input display component
+* output display component
+* input component
+* outputcompoent
+* add into index.html
+
+- parse html button
+
+- render html button 
+
+- update readme
+
