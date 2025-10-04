@@ -2,10 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: path.resolve(__dirname, './src/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    clean: true
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -20,7 +22,7 @@ module.exports = {
         }
       }
     ],
-  },  
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -28,8 +30,14 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'), 
+      directory: path.join(__dirname, 'public'),
     },
     port: 3000,
+    hot: true,
+    liveReload: true,
+    open: true,
+    compress: true,
+    historyApiFallback: true,
+    watchFiles: ['src/**/*', 'public/**/*']
   }
 }
