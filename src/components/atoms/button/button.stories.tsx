@@ -10,11 +10,7 @@ export default {
     backgrounds: { value: 'dark' },
   },
   argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: ['character'],
-      default: 'character',
-    },
+    variant: { table: { disable: true } },
     children: { table: { disable: true } },
   },
 };
