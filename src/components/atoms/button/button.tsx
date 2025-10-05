@@ -4,7 +4,7 @@ import { ButtonProps, VariantType } from './button-types';
 import { activeClasses, colorClasses, defaultColors, focusClasses, hoverClasses, keydownClasses, sizeClasses } from './button-theme';
 import { useOnWindowEvent } from '../../../hooks/useOnWindowEvent';
 
-export const Button = ({ character, text = '', color, variant = 'character', className = "", onClick = () => { }, keyCode = '' }: ButtonProps) => {
+export const Button = ({ character, text = '', color, variant = 'character', className = "", onClick = () => { }, onKeyDown = () => { }, keyCode = '' }: ButtonProps) => {
   const [isKeydown, setIsKeydown] = useState(false);
 
   if (!color) {
@@ -28,10 +28,6 @@ export const Button = ({ character, text = '', color, variant = 'character', cla
   };
 
   const checkKey = (event: KeyboardEvent, variant: VariantType) => {
-    console.log(event);
-    console.log(variant);
-    console.log(keyCode)
-    console.log(event.code === keyCode)
     if (variant === 'character' && event.key === character) return true;
     if (variant === 'space' && event.code === 'Space') return true;
     if (variant === 'delete' && (event.key === 'Backspace' || event.key === 'Delete')) return true;
@@ -39,14 +35,14 @@ export const Button = ({ character, text = '', color, variant = 'character', cla
     return false;
   }
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    console.log(event);
+  const handleKeyDown = (event: WindowEventMap['keydown']) => {
     if (checkKey(event, variant)) {
       setIsKeydown(true)
+      onKeyDown(event);
     }
   };
 
-  const handleKeyUp = (event: KeyboardEvent) => {
+  const handleKeyUp = (event: WindowEventMap['keyup']) => {
     if (checkKey(event, variant)) {
       setIsKeydown(false)
     }

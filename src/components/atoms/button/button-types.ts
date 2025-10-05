@@ -3,10 +3,11 @@ import { ButtonProps as HeadlessButtonProps } from '@headlessui/react';
 export type ColorType = 'primary' | 'secondary' | 'contrast';
 export type VariantType = 'character' | 'delete' | 'space' | 'html' | 'action';
 
-export type DefaultProps = HeadlessButtonProps & {
+export type DefaultProps = Omit<HeadlessButtonProps, 'onKeyDown'> & {
   color?: ColorType;
   children?: never;
   isActive?: boolean;
+  onKeyDown?: (event: KeyboardEvent) => void;
 };
 
 export type CharacterVariantProps = DefaultProps & {
