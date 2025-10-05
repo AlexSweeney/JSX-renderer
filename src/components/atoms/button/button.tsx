@@ -4,11 +4,29 @@ import { ButtonProps, VariantType } from './button-types';
 import { activeClasses, colorClasses, defaultColors, focusClasses, hoverClasses, keydownClasses, sizeClasses } from './button-theme';
 import { useOnWindowEvent } from '../../../hooks/useOnWindowEvent';
 
-export const Button = ({ character, text = '', color, variant = 'character', className = "", onClick = () => { }, onKeyDown = () => { }, keyCode = '' }: ButtonProps) => {
+export const Button = ({
+  character,
+  characterKey,
+  text = '',
+  color,
+  variant = 'character',
+  className = "",
+  onClick = () => { },
+  onKeyDown = () => { },
+  keyCode = ''
+}: ButtonProps) => {
   const [isKeydown, setIsKeydown] = useState(false);
 
   if (!color) {
     color = defaultColors[variant];
+  }
+
+  if (character && character.length > 1) {
+    character = character.split('')[0];
+  }
+
+  if (!characterKey && character) {
+    characterKey = character;
   }
 
   const baseClass = `rounded transition duration-200 font-medium ring-highlight`;
@@ -20,7 +38,7 @@ export const Button = ({ character, text = '', color, variant = 'character', cla
   const keydownClass = keydownClasses[color];
 
   const display = {
-    character: character?.split('')[0] ?? '',
+    character: character,
     delete: 'delete',
     space: '',
     html: text,
@@ -28,7 +46,7 @@ export const Button = ({ character, text = '', color, variant = 'character', cla
   };
 
   const checkKey = (event: KeyboardEvent, variant: VariantType) => {
-    if (variant === 'character' && event.key === character) return true;
+    if (variant === 'character' && event.key === characterKey) return true;
     if (variant === 'space' && event.code === 'Space') return true;
     if (variant === 'delete' && (event.key === 'Backspace' || event.key === 'Delete')) return true;
     if ((variant === 'html' || variant === 'action') && event.code === keyCode) return true;

@@ -13,6 +13,7 @@ export type DefaultProps = Omit<HeadlessButtonProps, 'onKeyDown'> & {
 export type CharacterVariantProps = DefaultProps & {
   variant: 'character';
   character: string;
+  characterKey?: string;
   text?: never;
   keyCode?: never;
 }
@@ -20,6 +21,7 @@ export type CharacterVariantProps = DefaultProps & {
 export type DeleteVaraintProps = DefaultProps & {
   variant: 'delete';
   character?: never;
+  characterKey?: never;
   text?: never;
   keyCode?: never;
 }
@@ -27,6 +29,7 @@ export type DeleteVaraintProps = DefaultProps & {
 export type SpaceVariantProps = DefaultProps & {
   variant: 'space';
   character?: never;
+  characterKey?: never;
   text?: never;
   keyCode?: never;
 }
@@ -34,6 +37,7 @@ export type SpaceVariantProps = DefaultProps & {
 export type HtmlVariantProps = DefaultProps & {
   variant: 'html';
   character?: never;
+  characterKey?: never;
   text?: string;
   keyCode?: string;
 }
@@ -41,6 +45,7 @@ export type HtmlVariantProps = DefaultProps & {
 export type ActionVariantProps = DefaultProps & {
   variant: 'action';
   character?: never;
+  characterKey?: never;
   text?: string;
   keyCode?: string;
 }
