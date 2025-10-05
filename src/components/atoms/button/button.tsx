@@ -1,87 +1,23 @@
-import React from 'react';
-import { Button as HeadlessButton } from '@headlessui/react'
+import React, { useState } from 'react';
+import { Button as HeadlessButton } from '@headlessui/react';
+import { ButtonProps, VariantType } from './button-types';
+import { activeClasses, colorClasses, defaultColors, focusClasses, hoverClasses, keydownClasses, sizeClasses } from './button-theme';
+import { useOnWindowEvent } from '../../../hooks/useOnWindowEvent';
 
-// ======== Types
-type ColorsType = 'primary' | 'secondary' | 'contrast' | 'html' | 'action';
+export const Button = ({ character, text = '', color, variant = 'character', className = "", onClick = () => { }, keyCode = '' }: ButtonProps) => {
+  const [isKeydown, setIsKeydown] = useState(false);
 
-type CharacterVariantProps = {
-  color?: ColorsType;
-  variant: 'character';
-  character: string;
-  children: never;
-  text: never;
-}
-
-type DeleteVaraintProps = {
-  color?: ColorsType;
-  variant: 'delete';
-  character: never;
-  children: never;
-  text: never;
-}
-
-type SpaceVariantProps = {
-  color?: ColorsType;
-  variant: 'space';
-  character: never;
-  children: never;
-  text?: never;
-}
-
-type HtmlVariantProps = {
-  color?: ColorsType;
-  variant: 'space';
-  character: never;
-  children: never;
-  text?: string;
-}
-
-type ActionVariantProps = {
-  color?: ColorsType;
-  variant: 'space';
-  character: never;
-  children: never;
-  text?: string;
-}
-
-export type ButtonProps =
-  | CharacterVariantProps
-  | DeleteVaraintProps
-  | SpaceVariantProps
-  | HtmlVariantProps
-  | ActionVariantProps;
-
-// ======== Colors
-const defaultColors = {
-  character: 'primary',
-  secondary: 'secondary',
-  space: 'secondary',
-  html: 'secondary',
-  action: 'contrast',
-};
-
-const colorClasses = {
-  primary: 'bg-primary hover:bg-primary-hover text-text',
-  secondary: 'bg-secondary hover:bg-secondary-hover text-text-contrast',
-  contrast: 'bg-contrast hover:bg-contrast-hover text-text-dark',
-};
-
-// ======== Sizes
-const buttonHeight = 'h-[2.5rem]';
-const sizeClasses = {
-  character: `${buttonHeight} w-[2.5rem]`,
-  delete: `${buttonHeight} w-[5rem]`,
-  space: `${buttonHeight} w-[15rem]`,
-  html: `${buttonHeight} w-[3.5rem]`,
-  action: `${buttonHeight} w-[5rem]`,
-};
-
-export const Button = ({ character, text = '', color, variant = 'character' }: ButtonProps) => {
   if (!color) {
     color = defaultColors[variant];
   }
 
-  const baseClasses = 'rounded transition-colors duration-200 font-medium active:ring-2 ring-highlight';
+  const baseClass = `rounded transition duration-200 font-medium ring-highlight`;
+  const colorClass = colorClasses[color];
+  const sizeClass = sizeClasses[variant];
+  const hoverClass = hoverClasses[color];
+  const activeClass = activeClasses[color];
+  const focusClass = focusClasses[color];
+  const keydownClass = keydownClasses[color];
 
   const display = {
     character: character?.split('')[0] ?? '',
@@ -91,9 +27,39 @@ export const Button = ({ character, text = '', color, variant = 'character' }: B
     action: text,
   };
 
+  const checkKey = (event: KeyboardEvent, variant: VariantType) => {
+    console.log(event);
+    console.log(variant);
+    console.log(keyCode)
+    console.log(event.code === keyCode)
+    if (variant === 'character' && event.key === character) return true;
+    if (variant === 'space' && event.code === 'Space') return true;
+    if (variant === 'delete' && (event.key === 'Backspace' || event.key === 'Delete')) return true;
+    if ((variant === 'html' || variant === 'action') && event.code === keyCode) return true;
+    return false;
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    console.log(event);
+    if (checkKey(event, variant)) {
+      setIsKeydown(true)
+    }
+  };
+
+  const handleKeyUp = (event: KeyboardEvent) => {
+    if (checkKey(event, variant)) {
+      setIsKeydown(false)
+    }
+  };
+
+  useOnWindowEvent('keydown', handleKeyDown);
+  useOnWindowEvent('keyup', handleKeyUp);
+
   return (
     <HeadlessButton
-      className={`${baseClasses} ${sizeClasses[variant]} ${colorClasses[color!]}`}
+      className={`${baseClass} ${colorClass} ${sizeClass} ${hoverClass} ${activeClass} ${focusClass} ${isKeydown && keydownClass} ${className}`}
+      onClick={onClick}
+      data-variant={variant}
     >
       {display[variant]}
     </HeadlessButton>

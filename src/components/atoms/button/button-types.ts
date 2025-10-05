@@ -1,0 +1,52 @@
+import { ButtonProps as HeadlessButtonProps } from '@headlessui/react';
+
+export type ColorType = 'primary' | 'secondary' | 'contrast';
+export type VariantType = 'character' | 'delete' | 'space' | 'html' | 'action';
+
+export type DefaultProps = HeadlessButtonProps & {
+  color?: ColorType;
+  children?: never;
+  isActive?: boolean;
+};
+
+export type CharacterVariantProps = DefaultProps & {
+  variant: 'character';
+  character: string;
+  text?: never;
+  keyCode?: never;
+}
+
+export type DeleteVaraintProps = DefaultProps & {
+  variant: 'delete';
+  character?: never;
+  text?: never;
+  keyCode?: never;
+}
+
+export type SpaceVariantProps = DefaultProps & {
+  variant: 'space';
+  character?: never;
+  text?: never;
+  keyCode?: never;
+}
+
+export type HtmlVariantProps = DefaultProps & {
+  variant: 'html';
+  character?: never;
+  text?: string;
+  keyCode?: string;
+}
+
+export type ActionVariantProps = DefaultProps & {
+  variant: 'action';
+  character?: never;
+  text?: string;
+  keyCode?: string;
+}
+
+export type ButtonProps =
+  | CharacterVariantProps
+  | DeleteVaraintProps
+  | SpaceVariantProps
+  | HtmlVariantProps
+  | ActionVariantProps;

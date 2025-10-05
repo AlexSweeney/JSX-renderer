@@ -57,5 +57,6 @@ export const Action = {
     variant: 'action',
     text: 'parse',
     color: 'contrast',
+    keyCode: 'ShiftLeft',
   },
 }
