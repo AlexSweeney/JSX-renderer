@@ -74,6 +74,7 @@ export const Button = ({
       className={`${baseClass} ${colorClass} ${sizeClass} ${hoverClass} ${activeClass} ${focusClass} ${isKeydown && keydownClass} ${className}`}
       onClick={onClick}
       data-variant={variant}
+      onMouseUp={(e) => e.currentTarget.blur()}
     >
       {display[variant]}
     </HeadlessButton>
