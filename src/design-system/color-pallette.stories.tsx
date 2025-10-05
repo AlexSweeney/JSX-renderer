@@ -14,8 +14,8 @@ export const Palette = () => (
           className="w-20 h-20 rounded shadow"
           style={{ backgroundColor: value }}
         />
-        <span className="mt-2 text-sm">{name}</span>
-        <span className="text-xs text-gray-500">{value}</span>
+        <span className="mt-2 text-text-contrast">{name}</span>
+        <span className="text-xs text-text">{value}</span>
       </div>
     ))}
   </div>
