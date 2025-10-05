@@ -1,6 +1,3 @@
-storybook hot reload
-add copilot
-
 - interace -> input html tags and text 
 * keyboard component
 * input display component
