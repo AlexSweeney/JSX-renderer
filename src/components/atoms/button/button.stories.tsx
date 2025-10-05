@@ -51,3 +51,11 @@ export const Html = {
     color: 'secondary',
   },
 }
+
+export const Action = {
+  args: {
+    variant: 'action',
+    text: 'parse',
+    color: 'contrast',
+  },
+}
