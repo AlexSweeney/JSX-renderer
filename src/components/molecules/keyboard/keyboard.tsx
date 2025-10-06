@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { Button } from '../../atoms/button/button';
-import { getDisabledSections, getIsOpeningTag } from './utils/utils';
+import { getDisabledSections, getIsClosingTag, getIsOpeningTag, getLastTag } from './utils/keyboard-utils';
 
 const topLetters = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const middleLetters = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
@@ -17,8 +17,8 @@ const keyCodes = {
 };
 
 export interface KeyboardProps {
-  onClick: (event: any) => void;
-  onKeyDown: (event: WindowEventMap['keydown']) => void;
+  onClick: (event: MouseEvent, value: string) => void;
+  onKeyDown: (event: WindowEventMap['keydown'], value: string) => void;
   className?: string;
   inputString?: string;
 }
@@ -29,9 +29,10 @@ export const Keyboard = ({
   className,
   inputString = ''
 }: KeyboardProps) => {
+  console.log('inputString', inputString);
   const rowClass = 'mb-2 flex justify-center last:mb-0';
   const buttonClass = 'mr-2 last:mr-0';
-  const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled } = getDisabledSections(inputString);
+  const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
 
   const characterButtonProps = {
     variant: 'character' as const,
@@ -46,8 +47,15 @@ export const Keyboard = ({
       <div className={`${rowClass} !justify-between`}>
         <div>
           {htmlTags.map((tag) => {
-            const isOpeningTag = getIsOpeningTag(tag);
-            const isDisabled = isOpeningTag ? openingTagsDisabled : closingTagsDisabled;
+            const tagType = getIsOpeningTag(tag) ? 'opening' : 'closing';
+
+            let isDisabled = false;
+            if (tagType === 'opening') {
+              isDisabled = openingTagsDisabled;
+            }
+            if (tagType === 'closing') {
+              isDisabled = closingTagsDisabled || tag !== validClosingTag;
+            }
 
             return (<Button
               key={tag}
@@ -56,30 +64,58 @@ export const Keyboard = ({
               text={tag}
               className={buttonClass}
               disabled={isDisabled}
+              onClick={(e) => onClick(e, tag)}
+              onKeyDown={(e) => onKeyDown(e, tag)}
             />)
           })}
         </div>
-        <Button variant="delete" />
+        <Button
+          variant="delete"
+          onClick={(e) => onClick(e, 'delete')}
+          onKeyDown={(e) => onKeyDown(e, 'delete')}
+        />
       </div>
       <div className={rowClass}>
         {topLetters.map(char => (
-          <Button {...characterButtonProps} character={char} key={char} />
+          <Button
+            {...characterButtonProps}
+            onClick={(e) => onClick(e, char)}
+            onKeyDown={(e) => onKeyDown(e, char)}
+            character={char}
+            key={char}
+          />
         ))}
       </div>
       <div className={rowClass}>
         {middleLetters.map(char => (
-          <Button {...characterButtonProps} character={char} key={char} />
+          <Button
+            {...characterButtonProps}
+            onClick={(e) => onClick(e, char)}
+            onKeyDown={(e) => onKeyDown(e, char)}
+            character={char}
+            key={char}
+          />
         ))}
       </div>
       <div className={rowClass}>
         <Button variant="action" text="parse" disabled={parseDisabled} className="mr-2" keyCode={keyCodes.parse} />
         {bottomLetters.map(char => (
-          <Button {...characterButtonProps} character={char} key={char} />
+          <Button
+            {...characterButtonProps}
+            onClick={(e) => onClick(e, char)}
+            onKeyDown={(e) => onKeyDown(e, char)}
+            character={char}
+            key={char}
+          />
         ))}
         <Button variant="action" text="render" disabled={renderDisabled} keyCode={keyCodes.render} />
       </div>
       <div className={`${rowClass} relative w-full px-2`}>
-        <Button variant='space' />
+        <Button
+          variant='space'
+          onClick={(e) => onClick(e, ' ')}
+          onKeyDown={(e) => onKeyDown(e, ' ')}
+        />
       </div>
     </div>
   )

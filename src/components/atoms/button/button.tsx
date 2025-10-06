@@ -72,7 +72,7 @@ export const Button = ({
   const handleKeyDown = (event: WindowEventMap['keydown']) => {
     if (checkKey(event, variant)) {
       setIsKeydown(true)
-      onKeyDown(event);
+      !disabled && onKeyDown(event);
     }
   };
 
@@ -88,7 +88,7 @@ export const Button = ({
   return (
     <HeadlessButton
       className={buttonClass}
-      onClick={onClick}
+      onClick={(e) => !disabled && onClick(e)}
       data-variant={variant}
       onMouseUp={(e) => e.currentTarget.blur()}
       disabled={disabled}

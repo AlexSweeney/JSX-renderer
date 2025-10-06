@@ -6,6 +6,14 @@ export const getIsClosingTag = (string: string) => {
   return string.startsWith('</') && string.endsWith('>');
 };
 
+export const getLastTag = (inputString: string) => {
+  const parts = splitString(inputString);
+  const reversedParts = parts.slice().reverse();
+  const lastTag = reversedParts.find(part => getIsOpeningTag(part) || getIsClosingTag(part));
+
+  return lastTag || null;
+};
+
 export const splitString = (string: string) => {
   let charArray = string.split('');
 
@@ -38,6 +46,7 @@ export const splitString = (string: string) => {
 export const getDisabledSections = (inputString: string) => {
   const parts = splitString(inputString);
   const lastPart = parts[parts.length - 1];
+  const lastTag = getLastTag(inputString);
 
   const options = {
     empty: {
@@ -46,6 +55,7 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: true,
       renderDisabled: true,
       parseDisabled: true,
+      validClosingTag: null,
     },
     openingTag: {
       charactersDisabled: false,
@@ -53,6 +63,7 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: false,
       renderDisabled: true,
       parseDisabled: true,
+      validClosingTag: lastTag?.replace('<', '</'),
     },
     closingTag: {
       charactersDisabled: true,
@@ -60,6 +71,7 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: true,
       renderDisabled: false,
       parseDisabled: false,
+      validClosingTag: null,
     },
     character: {
       charactersDisabled: false,
@@ -67,6 +79,7 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: false,
       renderDisabled: true,
       parseDisabled: true,
+      validClosingTag: lastTag?.replace('<', '</'),
     }
   };
 

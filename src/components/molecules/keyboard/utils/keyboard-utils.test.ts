@@ -1,4 +1,4 @@
-import { getDisabledSections, getIsOpeningTag, getIsClosingTag, splitString } from "./utils";
+import { getDisabledSections, getIsOpeningTag, getIsClosingTag, splitString, getLastTag } from "./keyboard-utils";
 
 describe('isOpeningTag', () => {
   it('returns true for valid opening tags', () => {
@@ -25,6 +25,29 @@ describe('isClosingTag', () => {
 
   it('returns false for non-tag strings', () => {
     expect(getIsClosingTag('Hello')).toBe(false);
+  });
+});
+
+describe('getLastTag', () => {
+  describe('when string contains tags', () => {
+    it('returns the last tag', () => {
+      const input = '<div>Hello</div>World<p>';
+      expect(getLastTag(input)).toBe('<p>');
+    });
+  });
+
+  describe('when string contains no tags', () => {
+    it('returns null', () => {
+      const input = 'Just some text';
+      expect(getLastTag(input)).toBeNull();
+    });
+  });
+
+  describe('when string is empty', () => {
+    it('returns null', () => {
+      const input = '';
+      expect(getLastTag(input)).toBeNull();
+    });
   });
 });
 
@@ -64,6 +87,7 @@ describe('getDisabledSections', () => {
         closingTagsDisabled: true,
         renderDisabled: true,
         parseDisabled: true,
+        validClosingTag: null,
       });
     });
   });
@@ -77,6 +101,7 @@ describe('getDisabledSections', () => {
         closingTagsDisabled: false,
         renderDisabled: true,
         parseDisabled: true,
+        validClosingTag: '</h1>',
       });
     });
   });
@@ -90,19 +115,21 @@ describe('getDisabledSections', () => {
         closingTagsDisabled: true,
         renderDisabled: false,
         parseDisabled: false,
+        validClosingTag: null,
       });
     });
   });
 
   describe('when string ends with text content', () => {
     it('returns correct settings', () => {
-      const result = getDisabledSections('<h1>Some text</h1>More text');
+      const result = getDisabledSections('<h1>Some text More text');
       expect(result).toEqual({
         charactersDisabled: false,
         openingTagsDisabled: true,
         closingTagsDisabled: false,
         renderDisabled: true,
         parseDisabled: true,
+        validClosingTag: '</h1>',
       });
     });
   });
