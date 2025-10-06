@@ -36,6 +36,7 @@
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.9"
+    "@headlessui/react": "^2.2.9",
+    "clsx": "^2.1.1"
   }
 }
