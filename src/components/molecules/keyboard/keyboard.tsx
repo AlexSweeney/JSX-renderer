@@ -29,7 +29,6 @@ export const Keyboard = ({
   className,
   inputString = ''
 }: KeyboardProps) => {
-  console.log('inputString', inputString);
   const rowClass = 'mb-2 flex justify-center last:mb-0';
   const buttonClass = 'mr-2 last:mr-0';
   const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
