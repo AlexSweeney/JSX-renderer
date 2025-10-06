@@ -11,11 +11,15 @@ export default {
   },
   args: {
     color: 'primary',
+    disabled: false
   },
   argTypes: {
     color: {
       options: ['primary', 'secondary', 'contrast'],
       control: { type: 'radio' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
     },
     variant: { table: { disable: true } },
     children: { table: { disable: true } },

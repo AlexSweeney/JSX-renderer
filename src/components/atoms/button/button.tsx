@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button as HeadlessButton } from '@headlessui/react';
 import { ButtonProps, VariantType } from './button-types';
-import { activeClasses, colorClasses, defaultColors, focusClasses, hoverClasses, keydownClasses, sizeClasses } from './button-theme';
+import { activeClasses, colorClasses, defaultColors, disabledClasses, focusClasses, hoverClasses, keydownClasses, sizeClasses } from './button-theme';
 import { useOnWindowEvent } from '../../../hooks/useOnWindowEvent';
+import clsx from 'clsx';
 
 export const Button = ({
   character,
@@ -13,7 +14,8 @@ export const Button = ({
   className = "",
   onClick = () => { },
   onKeyDown = () => { },
-  keyCode = ''
+  keyCode = '',
+  disabled = false,
 }: ButtonProps) => {
   const [isKeydown, setIsKeydown] = useState(false);
 
@@ -29,13 +31,27 @@ export const Button = ({
     characterKey = character;
   }
 
-  const baseClass = `rounded transition duration-200 font-medium ring-highlight`;
-  const colorClass = colorClasses[color];
-  const sizeClass = sizeClasses[variant];
-  const hoverClass = hoverClasses[color];
-  const activeClass = activeClasses[color];
-  const focusClass = focusClasses[color];
+  const baseClass = 'rounded transition duration-200 font-medium ring-highlight';
+  const colorClass = clsx(colorClasses.base, colorClasses[color]);
+  const sizeClass = clsx(sizeClasses.base, sizeClasses[variant]);
+
+  const hoverClass = clsx(hoverClasses.base, hoverClasses[color]);
+  const activeClass = clsx(activeClasses.base, activeClasses[color]);
+  const focusClass = clsx(focusClasses.base, focusClasses[color]);
+  const disabledClass = clsx(disabledClasses.base, disabledClasses[color]);
+
+  const mouseStateClasses = clsx(hoverClass, activeClass, focusClass, disabledClass);
+
   const keydownClass = keydownClasses[color];
+
+  const buttonClass = clsx(
+    baseClass,
+    colorClass,
+    sizeClass,
+    mouseStateClasses,
+    isKeydown && keydownClass,
+    className
+  )
 
   const display = {
     character: character,
@@ -71,10 +87,11 @@ export const Button = ({
 
   return (
     <HeadlessButton
-      className={`${baseClass} ${colorClass} ${sizeClass} ${hoverClass} ${activeClass} ${focusClass} ${isKeydown && keydownClass} ${className}`}
+      className={buttonClass}
       onClick={onClick}
       data-variant={variant}
       onMouseUp={(e) => e.currentTarget.blur()}
+      disabled={disabled}
     >
       {display[variant]}
     </HeadlessButton>
