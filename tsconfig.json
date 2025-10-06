@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                  // Modern JavaScript output
+    "module": "CommonJS",                // Node/Jest compatible
+    "esModuleInterop": true,             // Lets you write modern-style imports ie import React from 'react'; instead of import * as React from 'react';
+    "allowSyntheticDefaultImports": true,
+    "strict": true,                      // Enables strict type checking
+    "skipLibCheck": true,                // Speeds up compilation by skipping type checks on libraries
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",                     // Optional: compiled output folder
+    "rootDir": "src",                     // Your source folder
+    "moduleResolution": "node",
+    "jsx": "react"
+  },
+  "include": ["src"],                     // Include all your TypeScript files
+  "exclude": ["node_modules", "dist"]    // Exclude node_modules and output folder
+}
