@@ -15,7 +15,7 @@ export const getLastTag = (inputString: string) => {
 };
 
 export const splitString = (string: string) => {
-  let charArray = string.split('');
+  let charArray = string.trim().split('');
 
   let result: string[] = [];
   let htmlString = '';
