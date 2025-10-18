@@ -1,5 +1,9 @@
 - interace -> input html tags and text 
-* keyboard component
+* keyboard component 
+add enter button
+change space bar + delete button colors
+fix width + height
+
 * input display component
 * output display component
 * input component
