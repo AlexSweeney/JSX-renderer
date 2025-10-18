@@ -1,4 +1,4 @@
-import { getDisabledSections, getIsOpeningTag, getIsClosingTag, splitString, getLastTag } from "./keyboard-utils";
+import { getDisabledSections, getIsOpeningTag, getIsClosingTag, splitString, getLastTag, deleteFromString } from "./keyboard-utils";
 
 describe('isOpeningTag', () => {
   it('returns true for valid opening tags', () => {
@@ -134,3 +134,45 @@ describe('getDisabledSections', () => {
     });
   });
 });
+
+describe('deleteFromString', () => {
+  describe('if empty string', () => {
+    it('should return empty string', () => {
+      const string = '';
+      const result = deleteFromString(string);
+      const expectedResult = '';
+
+      expect(result).toEqual(expectedResult)
+    })
+  })
+
+  describe('if ends in space', () => {
+    it('should delete space', () => {
+      const string = '<p>hello </p> ';
+      const result = deleteFromString(string);
+      const expectedResult = '<p>hello </p>';
+
+      expect(result).toEqual(expectedResult)
+    })
+  })
+
+  describe('if ends in character', () => {
+    it('should delete character', () => {
+      const string = '<p>hello';
+      const result = deleteFromString(string);
+      const expectedResult = '<p>hell';
+
+      expect(result).toEqual(expectedResult)
+    })
+  })
+
+  describe('if last charcter is html tag', () => {
+    it('should delete html tag', () => {
+      const string = '<p>hello </p>';
+      const result = deleteFromString(string);
+      const expectedResult = '<p>hello ';
+
+      expect(result).toEqual(expectedResult)
+    })
+  })
+})

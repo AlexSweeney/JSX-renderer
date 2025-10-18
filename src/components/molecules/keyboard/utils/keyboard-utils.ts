@@ -6,6 +6,10 @@ export const getIsClosingTag = (string: string) => {
   return string.startsWith('</') && string.endsWith('>');
 };
 
+export const getIsTag = (string: string) => {
+  return getIsOpeningTag(string) || getIsClosingTag(string);
+}
+
 export const getLastTag = (inputString: string) => {
   const parts = splitString(inputString);
   const reversedParts = parts.slice().reverse();
@@ -98,4 +102,27 @@ export const getDisabledSections = (inputString: string) => {
   };
 
   return disabledSections;
+}
+
+export const deleteFromString = (inputString: string) => {
+  if (!inputString) {
+    return inputString;
+  }
+
+  if (inputString.endsWith(' ')) {
+    return inputString.slice(0, -1);
+  }
+
+  let result;
+  const stringParts = splitString(inputString);
+  const lastPart = stringParts.at(-1)!;
+
+  if (getIsTag(lastPart)) {
+    return stringParts.slice(0, -1).join('');
+  }
+
+  const trimmedLastPart = lastPart.slice(0, -1);
+  result = [...stringParts.slice(0, -1), trimmedLastPart].join('');
+
+  return result;
 }
