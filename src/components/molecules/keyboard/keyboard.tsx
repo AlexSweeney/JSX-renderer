@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { Button } from '../../atoms/button/button';
-import { getDisabledSections, getIsClosingTag, getIsOpeningTag, getLastTag } from './utils/keyboard-utils';
+import { getDisabledSections, getIsOpeningTag } from './utils/keyboard-utils';
 
 const topLetters = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const middleLetters = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
