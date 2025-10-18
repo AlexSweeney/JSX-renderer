@@ -1,9 +1,18 @@
+import React from "react";
 import { Button } from "../../atoms/button/button";
+import { ColorType } from "../../atoms/button/button-types";
 
 const rows = [['+', '-', '∗', '÷'], ['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', '.']];
 const charMap: Record<string, string> = {
   '∗': '*',
   '÷': '/',
+};
+const colorMap: Record<string, ColorType> = {
+  '+': 'secondary',
+  '-': 'secondary',
+  '∗': 'secondary',
+  '÷': 'secondary',
+  '.': 'secondary',
 };
 
 export interface NumPadProps {
@@ -27,7 +36,7 @@ export const NumPad = ({ onClick, onKeyDown }: NumPadProps) => {
       {rows.map((row, rowIndex) => (
         <div className={rowClass} key={`row-${rowIndex}`}>
           {row.map(char => {
-            return <Button {...characterButtonProps} character={char} characterKey={charMap[char] || char} key={char} />
+            return <Button {...characterButtonProps} color={colorMap[char] || null} character={char} characterKey={charMap[char] || char} key={char} />
           })}
         </div>
       ))}
