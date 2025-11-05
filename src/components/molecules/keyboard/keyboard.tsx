@@ -107,14 +107,19 @@ export const Keyboard = ({
             key={char}
           />
         ))}
+
         <Button variant="action" text="render" disabled={renderDisabled} keyCode={keyCodes.render} />
       </div>
-      <div className={`${rowClass} relative w-full px-2`}>
-        <Button
-          variant='space'
-          onClick={(e) => onClick(e, ' ')}
-          onKeyDown={(e) => onKeyDown(e, ' ')}
-        />
+      <div className={`${rowClass}flex w-full items-center justify-between`}>
+        <div className='flex-1 flex justify-center'>
+          <Button
+            variant='space'
+            onClick={(e) => onClick(e, ' ')}
+            onKeyDown={(e) => onKeyDown(e, ' ')}
+          />
+        </div>
+
+        <Button variant="action" text="enter" color="secondary" />
       </div>
     </div>
   )
