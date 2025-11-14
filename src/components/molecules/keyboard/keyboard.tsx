@@ -19,17 +19,14 @@ const keyCodes = {
 export interface KeyboardProps {
   onClick: (event: MouseEvent, value: string) => void;
   onKeyDown: (event: WindowEventMap['keydown'], value: string) => void;
-  className?: string;
   inputString?: string;
 }
 
 export const Keyboard = ({
   onClick,
   onKeyDown,
-  className,
   inputString = ''
 }: KeyboardProps) => {
-  const rowClass = 'mb-2 flex justify-center last:mb-0';
   const buttonClass = 'mr-2 last:mr-0';
   const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
 
