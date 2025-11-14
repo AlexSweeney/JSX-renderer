@@ -6,11 +6,23 @@
   <title>JSX renderer</title>
   <script src="./bundle.js"></script>
 </head>
-<body>
-  <textarea id="jsxTextarea"></textarea>
-  <button id="renderButton" onClick="render(jsxTextarea.value)">Render JSX</button>
+<body class="bg-background">
+  <textarea class="bg-surface" id="jsxTextarea"></textarea>
+  <button id="renderButton" onClick="render(jsxTextarea.value)">Render HTML</button>
   <div>
-    <p id="jsxOutputText">JSX output below</p>
+    <p class="font-bold text-primary" id="jsxOutputText">JSX output below</p>
   </div>
+  <button class="bg-primary text-secondary" label="hello">
+    &lt;p&gt;
+  </button>
+  <button>
+    &lt;/p&gt;
+  </button>
+  <button label="hello">
+    &lt;h1&gt;
+  </button>
+  <button>
+    &lt;/h1&gt;
+  </button>
 </body>
 </html>
