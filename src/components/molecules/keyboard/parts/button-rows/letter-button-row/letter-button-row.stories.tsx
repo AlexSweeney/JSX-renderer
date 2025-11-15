@@ -2,7 +2,7 @@ import { LetterButtonRow } from './letter-button-row';
 import { fn } from 'storybook/test';
 
 export default {
-  title: 'Molecules/ButtonRows/LetterButtonRow',
+  title: 'Molecules/Keyboard/Parts/ButtonRows/LetterButtonRow',
   component: LetterButtonRow,
   parameters: {
     layout: 'centered',

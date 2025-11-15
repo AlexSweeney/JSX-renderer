@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import { CharacterButton, CharacterButtonProps } from '../../../atoms/buttons/character-button/CharacterButton';
+import { CharacterButton, CharacterButtonProps } from '../../../../../atoms/buttons/character-button/CharacterButton';
 
 export interface LetterButtonRowProps {
   letters: string[];
