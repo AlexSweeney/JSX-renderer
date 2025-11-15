@@ -1,5 +1,5 @@
 import { BUTTON_COLORS } from '../button';
-import { SpaceBar } from './space-bar';
+import { SpaceBar } from './SpaceBar';
 import { fn } from 'storybook/test';
 
 export default {

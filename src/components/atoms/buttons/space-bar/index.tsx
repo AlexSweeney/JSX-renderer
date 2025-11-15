@@ -1,4 +1,4 @@
-import { SpaceBar, SpaceBarProps } from './space-bar';
+import { SpaceBar, SpaceBarProps } from './SpaceBar';
 
 export { SpaceBar, SpaceBarProps };
 
