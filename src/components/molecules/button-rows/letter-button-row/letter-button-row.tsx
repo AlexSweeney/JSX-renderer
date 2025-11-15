@@ -1,33 +1,35 @@
-import React from 'react';
-import { Button } from "../../../atoms/button/button";
-import { DefaultProps } from '../../../atoms/button/button-types';
+import React, { MouseEvent } from 'react';
+import { CharacterButton, CharacterButtonProps } from '../../../atoms/buttons/character-button/character-button';
 
 export interface LetterButtonRowProps {
   letters: string[];
-  onClick: DefaultProps['onClick'];
-  onKeyDown: DefaultProps['onKeyDown'];
+  onClick: CharacterButtonProps['onClick'];
+  onKeyDown: CharacterButtonProps['onKeyDown'];
   disabled: boolean;
 }
 
 export const LetterButtonRow = ({
   letters,
-  onClick = () => { },
-  onKeyDown = () => { },
+  onClick,
+  onKeyDown,
   disabled,
 }: LetterButtonRowProps) => {
-  return (
-    <div>
-      {(letters.map(letter => (
-        <Button
-          className="mr-2 last:mr-0"
-          variant={'character' as const}
-          onClick={(e) => onClick(e, letter)}
-          onKeyDown={(e) => onKeyDown(e, letter)}
-          character={letter}
-          key={letter}
-          disabled={disabled}
-        />
-      )))}
-    </div>
-  );
+  const handleClick = (event: MouseEvent<HTMLButtonElement>, letter: string) => {
+    onClick && onClick(event, letter);
+  };
+
+  const handleKeyDown = (event: KeyboardEvent, letter: string) => {
+    onKeyDown && onKeyDown(event, letter);
+  };
+
+  return (letters.map(letter => (
+    <CharacterButton
+      className="mr-2 last:mr-0"
+      onClick={(e) => handleClick(e, letter)}
+      onKeyDown={(e) => handleKeyDown(e, letter)}
+      disabled={disabled}
+    >
+      {letter}
+    </CharacterButton>
+  )));
 }

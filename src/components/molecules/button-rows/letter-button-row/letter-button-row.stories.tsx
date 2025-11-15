@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { LetterButtonRow } from './letter-button-row';
+import { fn } from 'storybook/test';
 
-const meta: Meta<typeof LetterButtonRow> = {
-  title: 'Molecules/LetterRows/LetterButtonRow',
+export default {
+  title: 'Molecules/ButtonRows/LetterButtonRow',
   component: LetterButtonRow,
   parameters: {
     layout: 'centered',
@@ -11,20 +11,12 @@ const meta: Meta<typeof LetterButtonRow> = {
     backgrounds: { value: 'dark' },
   },
 };
-export default meta;
 
-type Story = StoryObj<typeof LetterButtonRow>;
-
-export const Default: Story = {
+export const Default = {
   args: {
-    letters: ['A', 'B', 'C', 'D'],
+    letters: ['a', 'b', 'c', 'd'],
     disabled: false,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    letters: ['A', 'B', 'C', 'D'],
-    disabled: true,
+    onClick: fn(),
+    onKeyDown: fn(),
   },
 }; 

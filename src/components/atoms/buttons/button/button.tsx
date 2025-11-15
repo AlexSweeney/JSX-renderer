@@ -14,8 +14,8 @@ export interface ButtonProps {
   disabled?: boolean;
   color?: ButtonColorType;
   keyCode?: string;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: KeyboardEvent) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>, value?: string) => void;
+  onKeyDown?: (event: KeyboardEvent, value?: string) => void;
   children?: string;
 }
 
