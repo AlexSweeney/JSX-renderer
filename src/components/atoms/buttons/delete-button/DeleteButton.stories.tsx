@@ -1,5 +1,5 @@
 import { BUTTON_COLORS } from '../button';
-import { DeleteButton } from './delete-button';
+import { DeleteButton } from './DeleteButton';
 import { fn } from 'storybook/test';
 
 export default {

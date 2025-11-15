@@ -1,4 +1,4 @@
-import { DeleteButton, DeleteButtonProps } from './delete-button';
+import { DeleteButton, DeleteButtonProps } from './DeleteButton';
 
 export { DeleteButton, DeleteButtonProps };
 
