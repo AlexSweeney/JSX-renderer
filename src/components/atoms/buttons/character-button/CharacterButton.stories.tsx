@@ -1,5 +1,5 @@
 import React from 'react';
-import { CharacterButton } from './character-button';
+import { CharacterButton } from './CharacterButton';
 import { fn } from 'storybook/test';
 import { BUTTON_COLORS } from '../button';
 
