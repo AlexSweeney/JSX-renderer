@@ -1,13 +1,12 @@
 import React from "react";
-import { Button } from "../../atoms/button/button";
-import { ColorType } from "../../atoms/button/button-types";
+import { Button, ButtonColorType } from './../../atoms/buttons/button';
 
 const rows = [['+', '-', '∗', '÷'], ['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', '.']];
 const charMap: Record<string, string> = {
   '∗': '*',
   '÷': '/',
 };
-const colorMap: Record<string, ColorType> = {
+const colorMap: Record<string, ButtonColorType> = {
   '+': 'secondary',
   '-': 'secondary',
   '∗': 'secondary',
@@ -31,15 +30,17 @@ export const NumPad = ({ onClick, onKeyDown }: NumPadProps) => {
     onKeyDown,
   };
 
-  return (
-    <div className='bg-surface p-2 rounded'>
-      {rows.map((row, rowIndex) => (
-        <div className={rowClass} key={`row-${rowIndex}`}>
-          {row.map(char => {
-            return <Button {...characterButtonProps} color={colorMap[char] || null} character={char} characterKey={charMap[char] || char} key={char} />
-          })}
-        </div>
-      ))}
-    </div>
-  )
+  return null;
+
+  // return (
+  //   <div className='bg-surface p-2 rounded'>
+  //     {rows.map((row, rowIndex) => (
+  //       <div className={rowClass} key={`row-${rowIndex}`}>
+  //         {row.map(char => {
+  //           return <Button {...characterButtonProps} color={colorMap[char] || null} character={char} characterKey={charMap[char] || char} key={char} />
+  //         })}
+  //       </div>
+  //     ))}
+  //   </div>
+  // )
 }

@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react';
-import { Button } from '../../atoms/button/button';
+import { Button } from './../../atoms/buttons/button';
 import { getDisabledSections, getIsOpeningTag } from './utils/keyboard-utils';
+import { LetterButtonRow } from '../button-rows/letter-button-row/letter-button-row';
 
 const HTML_TAGS = ["<h1>", "</h1>", "<p>", "</p>"];
 const TOP_LETTERS = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -30,14 +31,8 @@ export const Keyboard = ({
   const buttonClass = 'mr-2 last:mr-0';
   const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
 
-  const characterButtonProps = {
-    variant: 'character' as const,
-    className: buttonClass,
-    onClick,
-    onKeyDown,
-    disabled: charactersDisabled,
-  };
-
+  return null;
+  /*
   const renderHtmlButtons = () => {
     return (
       <div>
@@ -67,18 +62,6 @@ export const Keyboard = ({
     );
   };
 
-  const renderLetterButtons = (letters: string[]) => {
-    return (letters.map(letter => (
-      <Button
-        {...characterButtonProps}
-        onClick={(e) => onClick(e, letter)}
-        onKeyDown={(e) => onKeyDown(e, letter)}
-        character={letter}
-        key={letter}
-      />
-    )));
-  }
-
   return (
     <div className='bg-surface p-2 grid grid-rows-5 gap-2'>
       <div className='flex justify-between'>
@@ -90,14 +73,29 @@ export const Keyboard = ({
         />
       </div>
       <div>
-        {renderLetterButtons(TOP_LETTERS)}
+        <LetterButtonRow
+          letters={TOP_LETTERS}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          disabled={charactersDisabled}
+        />
       </div>
       <div className="flex justify-center">
-        {renderLetterButtons(MIDDLE_LETTERS)}
+        <LetterButtonRow
+          letters={MIDDLE_LETTERS}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          disabled={charactersDisabled}
+        />
       </div>
       <div className='flex justify-between'>
         <Button variant="action" text="parse" disabled={parseDisabled} className="mr-2" keyCode={keyCodes.parse} />
-        {renderLetterButtons(BOTTOM_LETTERS)}
+        <LetterButtonRow
+          letters={BOTTOM_LETTERS}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          disabled={charactersDisabled}
+        />
         <Button variant="action" text="render" disabled={renderDisabled} keyCode={keyCodes.render} />
       </div>
       <div className='grid grid-cols-[1fr_2fr_1fr]'>
@@ -111,4 +109,5 @@ export const Keyboard = ({
       </div>
     </div>
   );
+  */
 }
