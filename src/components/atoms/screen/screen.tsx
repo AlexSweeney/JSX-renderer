@@ -1,5 +1,5 @@
 import React from 'react';
-import { Caret } from '../caret/caret';
+import { Caret } from '../caret/Caret';
 
 export interface ScreenProps {
   code: string;
