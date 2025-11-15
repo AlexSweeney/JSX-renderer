@@ -1,4 +1,10 @@
 - interace -> input html tags and text 
+
+ATOMS
+
+refactor - x
+add tests - 
+
 * keyboard component 
 add enter button
 change space bar + delete button colors 
