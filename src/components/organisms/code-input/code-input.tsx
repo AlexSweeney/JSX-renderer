@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from "react";
 import { Keyboard } from "../../molecules/keyboard/keyboard";
-import { Screen } from "../../atoms/screen/screen";
+import { Screen } from "../../atoms/screen/Screen";
 import { deleteFromString } from "../../molecules/keyboard/utils/keyboard-utils";
 
 export const CodeInput = () => {

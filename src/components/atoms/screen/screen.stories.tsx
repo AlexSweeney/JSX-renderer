@@ -1,5 +1,5 @@
 import React from 'react';
-import { Screen, ScreenProps } from './screen';
+import { Screen, ScreenProps } from './Screen';
 
 export default {
   title: 'Atoms/Screen',
