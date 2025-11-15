@@ -21,7 +21,7 @@ export interface ButtonProps {
 
 export const Button = ({
   color = 'primary',
-  className: passedButtonClass = '',
+  className = '',
   disabled,
   keyCode,
   onClick,
@@ -40,7 +40,7 @@ export const Button = ({
     baseStyles: BUTTON_STYLES,
     isKeyDown,
   });
-  const buttonClass = clsx(defaultButtonClass, passedButtonClass);
+  const buttonClass = clsx(defaultButtonClass, className);
 
   const isKeyForButton = (event: KeyboardEvent) => {
     return event.code === keyCode || event.key === keyCode;

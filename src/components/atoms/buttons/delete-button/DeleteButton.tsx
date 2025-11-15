@@ -10,8 +10,8 @@ export interface DeleteButtonProps extends Pick<ButtonProps,
 
 export const DeleteButton = ({
   color = 'secondary',
-  onClick = () => { },
-  onKeyDown = () => { },
+  onClick,
+  onKeyDown,
   disabled = false,
 }: DeleteButtonProps) => {
   const keyCode = 'Backspace';

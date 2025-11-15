@@ -11,8 +11,8 @@ export interface HtmlButtonProps extends Pick<ButtonProps,
 
 export const HtmlButton = ({
   color = 'secondary',
-  onClick = () => { },
-  onKeyDown = () => { },
+  onClick,
+  onKeyDown,
   disabled = false,
   children
 }: HtmlButtonProps) => {
