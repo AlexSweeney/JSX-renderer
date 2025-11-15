@@ -1,7 +1,6 @@
 import '../src/styles.css';
 import { theme } from './../src/design-system/theme';
 
-/** @type { import('@storybook/react-webpack5').Preview } */
 const preview = {
   parameters: {
     controls: {
