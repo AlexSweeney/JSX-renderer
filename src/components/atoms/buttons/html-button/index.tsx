@@ -1,4 +1,4 @@
-import { HtmlButton, HtmlButtonProps } from './html-button';
+import { HtmlButton, HtmlButtonProps } from './HtmlButton';
 
 export { HtmlButton, HtmlButtonProps };
 

@@ -1,5 +1,5 @@
 import { BUTTON_COLORS } from '../button';
-import { HtmlButton } from './html-button';
+import { HtmlButton } from './HtmlButton';
 import { fn } from 'storybook/test';
 
 export default {
