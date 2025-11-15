@@ -1,4 +1,4 @@
-import { Button, BUTTON_COLORS } from './button';
+import { Button, BUTTON_COLORS } from './Button';
 import { fn } from 'storybook/test';
 
 export default {

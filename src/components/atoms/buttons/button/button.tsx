@@ -2,8 +2,8 @@ import React, { MouseEvent, useState } from 'react';
 import { Button as HeadlessButton } from '@headlessui/react';
 import { useOnWindowEvent } from '../../../../hooks/useOnWindowEvent';
 import clsx from 'clsx';
-import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './button.styles';
-import { getButtonClass, removeTargetFocus } from './button.utils';
+import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './Button.styles';
+import { getButtonClass, removeTargetFocus } from './Button.utils';
 
 export const BUTTON_COLORS = ['primary', 'secondary', 'contrast'] as const;
 export type ButtonColorType = typeof BUTTON_COLORS[number];
