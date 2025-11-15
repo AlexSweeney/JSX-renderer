@@ -1,4 +1,4 @@
-import { ActionButton } from './action-button';
+import { ActionButton } from './ActionButton';
 import { fn } from 'storybook/test';
 import { BUTTON_COLORS } from '../button';
 
@@ -29,3 +29,4 @@ export const Default = {
     disabled: false,
   },
 };
+

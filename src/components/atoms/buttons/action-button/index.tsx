@@ -1,4 +1,4 @@
-import { ActionButton, ActionButtonProps } from './action-button';
+import { ActionButton, ActionButtonProps } from './ActionButton';
 
 export { ActionButton, ActionButtonProps };
 
