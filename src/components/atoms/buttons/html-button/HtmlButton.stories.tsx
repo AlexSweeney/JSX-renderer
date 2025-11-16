@@ -22,10 +22,8 @@ export default {
 
 export const Default = {
   args: {
-    color: 'secondary',
     children: '<p>',
     onClick: fn(),
     onKeyDown: fn(),
-    disabled: false,
   },
 };

@@ -21,10 +21,8 @@ export default {
 
 export const Default = {
   args: {
-    color: 'primary',
     children: 'button',
     onClick: fn(),
     onKeyDown: fn(),
-    disabled: false,
   },
 };
