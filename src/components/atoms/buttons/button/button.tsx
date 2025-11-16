@@ -5,28 +5,28 @@ import clsx from 'clsx';
 import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './Button.styles';
 import { getButtonClass, removeTargetFocus } from './Button.utils';
 
-export const BUTTON_COLORS = ['primary', 'secondary', 'contrast'] as const;
-export type ButtonColorType = typeof BUTTON_COLORS[number];
+export const BUTTON_COLORS = ['contrast', 'primary', 'secondary'];
+export type ButtonColorType = 'contrast' | 'primary' | 'secondary';
 export type ButtonState = "default" | "hover" | "active" | "focus" | "disabled" | "keydown";
 
 export interface ButtonProps {
+  children?: string;
   className?: string;
-  disabled?: boolean;
   color?: ButtonColorType;
+  disabled?: boolean;
   keyCode?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>, value?: string) => void;
   onKeyDown?: (event: KeyboardEvent, value?: string) => void;
-  children?: string;
 }
 
 export const Button = ({
-  color = 'primary',
+  children,
   className = '',
+  color = 'primary',
   disabled,
   keyCode,
   onClick,
   onKeyDown,
-  children
 }: ButtonProps) => {
   if (!keyCode) {
     keyCode = children;
