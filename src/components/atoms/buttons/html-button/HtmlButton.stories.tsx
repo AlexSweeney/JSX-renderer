@@ -16,9 +16,9 @@ const meta = {
     },
   },
   args: {
-    children: '<p>',
     onClick: fn(),
     onKeyDown: fn(),
+    children: '<p>',
   }
 } satisfies Meta<HtmlButtonProps>;
 

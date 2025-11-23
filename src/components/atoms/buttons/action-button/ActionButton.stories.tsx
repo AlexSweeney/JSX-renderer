@@ -18,6 +18,7 @@ const meta = {
   args: {
     onClick: fn(),
     onKeyDown: fn(),
+    children: 'parse',
   }
 } satisfies Meta<ActionButtonProps>;
 
@@ -26,8 +27,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
-  args: {
-    children: 'parse',
-  },
 } satisfies Story;
 

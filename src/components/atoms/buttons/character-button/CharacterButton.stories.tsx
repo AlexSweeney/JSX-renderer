@@ -17,9 +17,9 @@ const meta = {
     },
   },
   args: {
-    children: 'a',
     onClick: fn(),
     onKeyDown: fn(),
+    children: 'a',
   }
 } satisfies Meta<CharacterButtonProps>;
 export default meta;
