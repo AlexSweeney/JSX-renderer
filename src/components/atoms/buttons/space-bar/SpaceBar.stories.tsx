@@ -18,6 +18,10 @@ const meta = {
       control: { type: 'radio' },
     },
   },
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+  },
 } satisfies Meta<SpaceBarProps>;
 
 export default meta;
@@ -25,8 +29,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
-  args: {
-    onClick: fn(),
-    onKeyDown: fn(),
-  },
 } satisfies Story;
