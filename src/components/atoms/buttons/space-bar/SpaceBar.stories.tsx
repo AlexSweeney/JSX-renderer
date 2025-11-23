@@ -1,4 +1,4 @@
-import { BUTTON_COLORS } from '../button';
+import { BUTTON_COLORS } from '../base-button';
 import { SpaceBar, SpaceBarProps } from './SpaceBar';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';

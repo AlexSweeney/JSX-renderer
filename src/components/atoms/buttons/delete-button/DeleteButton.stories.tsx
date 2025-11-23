@@ -1,4 +1,4 @@
-import { BUTTON_COLORS } from '../button';
+import { BUTTON_COLORS } from '../base-button';
 import { DeleteButton, DeleteButtonProps } from './DeleteButton';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, ButtonProps } from "../button";
+import { BaseButton, BaseButtonProps } from "../base-button";
 import clsx from 'clsx';
 
-export interface ActionButtonProps extends ButtonProps { };
+export interface ActionButtonProps extends BaseButtonProps { };
 
 export const ActionButton = ({
   color = 'contrast',
@@ -16,7 +16,7 @@ export const ActionButton = ({
   const buttonClass = clsx(sizeClass, className);
 
   return (
-    <Button
+    <BaseButton
       color={color}
       onClick={onClick}
       onKeyDown={onKeyDown}
@@ -24,6 +24,6 @@ export const ActionButton = ({
       disabled={disabled}
     >
       {children}
-    </Button>
+    </BaseButton>
   )
 };

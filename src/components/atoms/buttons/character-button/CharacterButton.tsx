@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, ButtonProps } from "../button";
+import { BaseButton, BaseButtonProps } from "../base-button";
 import clsx from 'clsx';
 
-export interface CharacterButtonProps extends Pick<ButtonProps,
+export interface CharacterButtonProps extends Pick<BaseButtonProps,
   'color' |
   'children' |
   'className' |
@@ -31,7 +31,7 @@ export const CharacterButton = ({
   const buttonClass = clsx(sizeClass, className);
 
   return (
-    <Button
+    <BaseButton
       color={color}
       disabled={disabled}
       className={buttonClass}
@@ -40,6 +40,6 @@ export const CharacterButton = ({
       keyCode={keyCode}
     >
       {text}
-    </Button>
+    </BaseButton>
   )
 };

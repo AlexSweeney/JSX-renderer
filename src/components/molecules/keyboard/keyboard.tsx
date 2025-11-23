@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
-import { Button } from './../../atoms/buttons/button';
+import { BaseButton } from '../../atoms/buttons/base-button';
 import { getDisabledSections, getIsOpeningTag } from './utils/keyboard-utils';
-import { LetterButtonRow } from '../button-rows/letter-button-row/letter-button-row';
+// import { LetterButtonRow } from '../button-rows/letter-button-row/letter-button-row';
 
 const HTML_TAGS = ["<h1>", "</h1>", "<p>", "</p>"];
 const TOP_LETTERS = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];

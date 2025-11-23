@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, ButtonProps } from "../button";
+import { BaseButton, BaseButtonProps } from "../base-button";
 import clsx from "clsx";
 
-export interface SpaceBarProps extends Pick<ButtonProps,
+export interface SpaceBarProps extends Pick<BaseButtonProps,
   'className' |
   'onClick' |
   'onKeyDown' |
@@ -20,7 +20,7 @@ export const SpaceBar = ({
   const keyCode = 'Space';
 
   return (
-    <Button
+    <BaseButton
       onClick={onClick}
       onKeyDown={onKeyDown}
       className={spaceBarClass}

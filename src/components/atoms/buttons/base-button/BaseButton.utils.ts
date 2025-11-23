@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { MouseEvent } from "react";
-import { ButtonColorType, ButtonState } from "./Button";
+import { ButtonColorType, ButtonState } from "./BaseButton";
 
 export const getButtonClass = ({ color, colorStyles, baseStyles, isKeyDown }: {
   color: ButtonColorType,

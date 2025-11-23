@@ -2,14 +2,14 @@ import React, { MouseEvent, useState } from 'react';
 import { Button as HeadlessButton } from '@headlessui/react';
 import { useOnWindowEvent } from '../../../../hooks/useOnWindowEvent';
 import clsx from 'clsx';
-import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './Button.styles';
-import { getButtonClass, removeTargetFocus } from './Button.utils';
+import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './BaseButton.styles';
+import { getButtonClass, removeTargetFocus } from './BaseButton.utils';
 
 export const BUTTON_COLORS = ['contrast', 'primary', 'secondary'];
 export type ButtonColorType = 'contrast' | 'primary' | 'secondary';
 export type ButtonState = "default" | "hover" | "active" | "focus" | "disabled" | "keydown";
 
-export interface ButtonProps {
+export interface BaseButtonProps {
   children?: string;
   className?: string;
   color?: ButtonColorType;
@@ -19,7 +19,7 @@ export interface ButtonProps {
   onKeyDown?: (event: KeyboardEvent, value?: string) => void;
 }
 
-export const Button = ({
+export const BaseButton = ({
   children,
   className = '',
   color = 'primary',
@@ -27,7 +27,7 @@ export const Button = ({
   keyCode,
   onClick,
   onKeyDown,
-}: ButtonProps) => {
+}: BaseButtonProps) => {
   if (!keyCode) {
     keyCode = children;
   }

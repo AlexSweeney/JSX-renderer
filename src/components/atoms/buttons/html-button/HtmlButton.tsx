@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, ButtonProps } from "../button";
+import { BaseButton, BaseButtonProps } from "../base-button";
 
-export interface HtmlButtonProps extends Pick<ButtonProps,
+export interface HtmlButtonProps extends Pick<BaseButtonProps,
   'color' |
   'onClick' |
   'onKeyDown' |
@@ -19,7 +19,7 @@ export const HtmlButton = ({
   const sizeClass = 'w-[3.5rem] h-[2.5rem]';
 
   return (
-    <Button
+    <BaseButton
       color={color}
       onClick={onClick}
       onKeyDown={onKeyDown}
@@ -27,6 +27,6 @@ export const HtmlButton = ({
       disabled={disabled}
     >
       {children}
-    </Button>
+    </BaseButton>
   )
 }

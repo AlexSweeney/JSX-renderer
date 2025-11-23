@@ -1,5 +1,4 @@
-import React from "react";
-import { Button, ButtonColorType } from '../../atoms/buttons/button';
+import { BaseButton, ButtonColorType } from '../../atoms/buttons/base-button';
 
 const rows = [['+', '-', '∗', '÷'], ['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', '.']];
 const charMap: Record<string, string> = {

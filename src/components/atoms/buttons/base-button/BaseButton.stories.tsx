@@ -1,10 +1,10 @@
-import { Button, BUTTON_COLORS, ButtonProps } from './Button';
+import { BaseButton, BUTTON_COLORS, BaseButtonProps } from './BaseButton';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Atoms/Buttons/Button',
-  component: Button,
+  title: 'Atoms/Buttons/BaseButton',
+  component: BaseButton,
   parameters: {
     layout: 'centered',
   },
@@ -15,11 +15,11 @@ const meta = {
     },
   },
   args: {
-    children: 'button',
+    children: 'base button',
     onClick: fn(),
     onKeyDown: fn(),
   }
-} satisfies Meta<ButtonProps>;
+} satisfies Meta<BaseButtonProps>;
 
 export default meta;
 

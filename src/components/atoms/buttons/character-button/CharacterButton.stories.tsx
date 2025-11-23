@@ -1,7 +1,7 @@
 import React from 'react';
 import { CharacterButton, CharacterButtonProps } from './CharacterButton';
 import { fn } from 'storybook/test';
-import { BUTTON_COLORS } from '../button';
+import { BUTTON_COLORS } from '../base-button';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
