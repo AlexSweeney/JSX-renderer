@@ -19,8 +19,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-  args: {
-  },
   render: () => (
     <div className='flex bg-surface-light justify-center items-center w-fit h-fit p-2'>
       <Caret />

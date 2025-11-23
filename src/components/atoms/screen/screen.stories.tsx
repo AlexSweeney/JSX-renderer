@@ -12,6 +12,9 @@ const meta = {
     backgrounds: { value: 'dark' },
   },
   tags: ['autodocs'],
+  args: {
+    code: '',
+  },
 } satisfies Meta<ScreenProps>;
 
 export default meta;
@@ -19,9 +22,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-  args: {
-    code: '',
-  },
   render: (args: ScreenProps) => (
     <div className='flex w-[300px] h-[100px]'>
       <Screen {...args} />

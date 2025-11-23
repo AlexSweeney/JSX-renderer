@@ -18,6 +18,11 @@ const meta = {
       control: { type: 'radio' },
     },
   },
+  args: {
+    children: 'button',
+    onClick: fn(),
+    onKeyDown: fn(),
+  }
 } satisfies Meta<ButtonProps>;
 
 export default meta;
@@ -25,9 +30,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
-  args: {
-    children: 'button',
-    onClick: fn(),
-    onKeyDown: fn(),
-  },
 } satisfies Story;

@@ -12,16 +12,15 @@ const meta = {
     backgrounds: { value: 'dark' },
   },
   tags: ['autodocs'],
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+    inputString: '',
+  },
 } satisfies Meta<KeyboardProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
-  args: {
-    onClick: fn(),
-    onKeyDown: fn(),
-    inputString: '',
-  },
-} satisfies Story;
+export const Primary = {} satisfies Story;

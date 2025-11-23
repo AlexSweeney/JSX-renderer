@@ -1,4 +1,4 @@
-import { NumPad, NumPadProps } from './num-pad';
+import { NumPad, NumPadProps } from './NumPad';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -12,15 +12,14 @@ const meta = {
     backgrounds: { value: 'dark' },
   },
   tags: ['autodocs'],
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+  },
 } satisfies Meta<NumPadProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
-  args: {
-    onClick: fn(),
-    onKeyDown: fn(),
-  },
-} satisfies Story;
+export const Primary = {} satisfies Story;

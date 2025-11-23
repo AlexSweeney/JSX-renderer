@@ -1,4 +1,4 @@
-import { CodeInput } from './code-input';
+import { CodeInput } from './CodeInput';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta = {

@@ -1,4 +1,4 @@
-import { LetterButtonRow, LetterButtonRowProps } from './letter-button-row';
+import { LetterButtonRow, LetterButtonRowProps } from './LetterButtonRow';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -12,17 +12,16 @@ const meta = {
     backgrounds: { value: 'dark' },
   },
   tags: ['autodocs'],
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+    letters: ['a', 'b', 'c', 'd'],
+    disabled: false,
+  },
 } satisfies Meta<LetterButtonRowProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-  args: {
-    letters: ['a', 'b', 'c', 'd'],
-    disabled: false,
-    onClick: fn(),
-    onKeyDown: fn(),
-  },
-} satisfies Story; 
+export const Default = {} satisfies Story; 
