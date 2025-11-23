@@ -9,9 +9,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  globals: {
-    backgrounds: { value: 'dark' },
-  },
   argTypes: {
     color: {
       options: BUTTON_COLORS,

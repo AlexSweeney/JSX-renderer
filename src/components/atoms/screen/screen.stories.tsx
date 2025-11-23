@@ -8,9 +8,13 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  globals: {
-    backgrounds: { value: 'dark' },
-  },
+  decorators: [
+    (Story) => (
+      <div className='flex w-[300px] h-[100px]'>
+        <Story />
+      </div>
+    )
+  ],
   args: {
     code: '',
   },
@@ -21,9 +25,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-  render: (args: ScreenProps) => (
-    <div className='flex w-[300px] h-[100px]'>
-      <Screen {...args} />
-    </div>
-  )
 } satisfies Story;

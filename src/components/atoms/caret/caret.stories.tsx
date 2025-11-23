@@ -8,9 +8,11 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  globals: {
-    backgrounds: { value: 'dark' },
-  },
+  decorators: [(Story) => (
+    <div className='flex bg-surface-light justify-center items-center w-fit h-fit p-2'>
+      <Story />
+    </div>
+  )]
 } satisfies Meta<CaretProps>;
 
 export default meta;
@@ -18,9 +20,4 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-  render: () => (
-    <div className='flex bg-surface-light justify-center items-center w-fit h-fit p-2'>
-      <Caret />
-    </div>
-  )
 } satisfies Story;

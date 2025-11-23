@@ -8,9 +8,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  globals: {
-    backgrounds: { value: 'dark' },
-  },
   args: {
     onClick: fn(),
     onKeyDown: fn(),

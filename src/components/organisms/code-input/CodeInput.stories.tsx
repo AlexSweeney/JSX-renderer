@@ -7,9 +7,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  globals: {
-    backgrounds: { value: 'dark' },
-  },
 } satisfies Meta;
 
 export default meta;
