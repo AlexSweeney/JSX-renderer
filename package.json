@@ -6,7 +6,7 @@
     "compile": "./node_modules/.bin/babel src --out-dir lib",
     "dev": "webpack serve --config ./webpack.config.js",
     "test": "jest --noStackTrace --reporters=default --verbose=false --watch",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "NODE_OPTIONS='--localstorage-file=/tmp/.storybook-localstorage' storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "author": "",
