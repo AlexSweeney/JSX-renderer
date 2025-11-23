@@ -4,6 +4,12 @@ import { theme } from '../src/design-system/theme';
 
 const preview: Preview = {
   parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
     backgrounds: {
       options: {
         dark: { name: 'Dark', value: theme.colors.background },
