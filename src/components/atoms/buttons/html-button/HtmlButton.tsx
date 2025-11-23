@@ -1,32 +1,30 @@
-import React from 'react';
+import React from "react";
 import { BaseButton, BaseButtonProps } from "../base-button";
+import clsx from "clsx";
 
-export interface HtmlButtonProps extends Pick<BaseButtonProps,
-  'color' |
-  'onClick' |
-  'onKeyDown' |
-  'disabled' |
-  'children'
-> { };
+export interface HtmlButtonProps extends BaseButtonProps {}
 
 export const HtmlButton = ({
-  color = 'secondary',
+  color = "secondary",
   onClick,
   onKeyDown,
   disabled = false,
-  children
+  keyCode,
+  className,
+  children,
 }: HtmlButtonProps) => {
-  const sizeClass = 'w-[3.5rem] h-[2.5rem]';
+  const sizeClass = "w-[3.5rem] h-[2.5rem]";
+  const buttonClass = clsx(sizeClass, className);
 
   return (
     <BaseButton
       color={color}
       onClick={onClick}
       onKeyDown={onKeyDown}
-      className={sizeClass}
+      className={buttonClass}
       disabled={disabled}
-    >
+      keyCode={keyCode}>
       {children}
     </BaseButton>
-  )
-}
+  );
+};

@@ -1,7 +1,8 @@
 import React, { MouseEvent } from 'react';
-// import { BaseButton } from '../../atoms/buttons/base-button';
+import { BaseButton } from '../../atoms/buttons/base-button';
 import { getDisabledSections, getIsOpeningTag } from './utils/keyboard-utils';
-// import { LetterButtonRow } from '../button-rows/letter-button-row/letter-button-row';
+import { DeleteButton } from '../../atoms/buttons/delete-button';
+import { LetterButtonRow } from './parts/button-rows/letter-button-row';
 
 const HTML_TAGS = ["<h1>", "</h1>", "<p>", "</p>"];
 const TOP_LETTERS = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -31,8 +32,6 @@ export const Keyboard = ({
   const buttonClass = 'mr-2 last:mr-0';
   const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
 
-  return null;
-  /*
   const renderHtmlButtons = () => {
     return (
       <div>
@@ -47,7 +46,7 @@ export const Keyboard = ({
             isDisabled = closingTagsDisabled || tag !== validClosingTag;
           }
 
-          return (<Button
+          return (<BaseButton
             key={tag}
             keyCode={keyCodes[tag as keyof typeof keyCodes] || ''}
             variant="html"
@@ -66,13 +65,12 @@ export const Keyboard = ({
     <div className='bg-surface p-2 grid grid-rows-5 gap-2'>
       <div className='flex justify-between'>
         {renderHtmlButtons()}
-        <Button
-          variant="delete"
+        <DeleteButton
           onClick={(e) => onClick(e, 'delete')}
           onKeyDown={(e) => onKeyDown(e, 'delete')}
         />
       </div>
-      <div>
+      {/* <div>
         <LetterButtonRow
           letters={TOP_LETTERS}
           onClick={onClick}
@@ -106,8 +104,7 @@ export const Keyboard = ({
           className="col-start-2"
         />
         <Button variant="action" text="enter" color="secondary" className="col-start-3 justify-self-end" />
-      </div>
+      </div> */}
     </div>
   );
-  */
 }

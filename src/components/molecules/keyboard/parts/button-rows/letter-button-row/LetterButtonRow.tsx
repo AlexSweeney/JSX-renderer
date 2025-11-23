@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { CharacterButton, CharacterButtonProps } from '../../../../../atoms/buttons/character-button/CharacterButton';
+import { buttonRowButtonStyle } from '../ButtonRow.style';
 
 export interface LetterButtonRowProps {
   letters: string[];
@@ -24,7 +25,7 @@ export const LetterButtonRow = ({
 
   return (letters.map(letter => (
     <CharacterButton
-      className="mr-2 last:mr-0"
+      className={buttonRowButtonStyle}
       onClick={(e) => handleClick(e, letter)}
       onKeyDown={(e) => handleKeyDown(e, letter)}
       disabled={disabled}
