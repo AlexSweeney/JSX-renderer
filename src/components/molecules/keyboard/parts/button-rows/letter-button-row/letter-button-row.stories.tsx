@@ -1,7 +1,8 @@
-import { LetterButtonRow } from './letter-button-row';
+import { LetterButtonRow, LetterButtonRowProps } from './letter-button-row';
 import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Molecules/Keyboard/Parts/ButtonRows/LetterButtonRow',
   component: LetterButtonRow,
   parameters: {
@@ -10,7 +11,12 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
-};
+  tags: ['autodocs'],
+} satisfies Meta<LetterButtonRowProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
@@ -19,4 +25,4 @@ export const Default = {
     onClick: fn(),
     onKeyDown: fn(),
   },
-}; 
+} satisfies Story; 

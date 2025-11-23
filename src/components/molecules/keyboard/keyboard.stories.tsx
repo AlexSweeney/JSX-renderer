@@ -1,6 +1,8 @@
-import { Keyboard } from './keyboard';
+import { Keyboard, KeyboardProps } from './keyboard';
+import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Molecules/Keyboard',
   component: Keyboard,
   parameters: {
@@ -9,8 +11,17 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
-};
+  tags: ['autodocs'],
+} satisfies Meta<KeyboardProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-
-}
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+    inputString: '',
+  },
+} satisfies Story;

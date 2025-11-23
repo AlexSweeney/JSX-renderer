@@ -1,7 +1,8 @@
 import React from 'react';
 import { Screen, ScreenProps } from './Screen';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Screen',
   component: Screen,
   parameters: {
@@ -10,14 +11,20 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
-};
+  tags: ['autodocs'],
+} satisfies Meta<ScreenProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
+    code: '',
   },
   render: (args: ScreenProps) => (
     <div className='flex w-[300px] h-[100px]'>
       <Screen {...args} />
     </div>
   )
-};
+} satisfies Story;

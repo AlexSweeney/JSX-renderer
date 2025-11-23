@@ -1,8 +1,9 @@
 import { BUTTON_COLORS } from '../button';
-import { DeleteButton } from './DeleteButton';
+import { DeleteButton, DeleteButtonProps } from './DeleteButton';
 import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Buttons/DeleteButton',
   component: DeleteButton,
   parameters: {
@@ -18,11 +19,15 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+} satisfies Meta<DeleteButtonProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
     onClick: fn(),
     onKeyDown: fn(),
   },
-};
+} satisfies Story;

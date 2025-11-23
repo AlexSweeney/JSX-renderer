@@ -1,6 +1,8 @@
-import { NumPad } from './num-pad';
+import { NumPad, NumPadProps } from './num-pad';
+import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Molecules/NumPad',
   component: NumPad,
   parameters: {
@@ -9,8 +11,16 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
-};
+  tags: ['autodocs'],
+} satisfies Meta<NumPadProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
-
-}
+  args: {
+    onClick: fn(),
+    onKeyDown: fn(),
+  },
+} satisfies Story;

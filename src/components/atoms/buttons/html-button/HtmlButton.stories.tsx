@@ -1,8 +1,9 @@
 import { BUTTON_COLORS } from '../button';
-import { HtmlButton } from './HtmlButton';
+import { HtmlButton, HtmlButtonProps } from './HtmlButton';
 import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Buttons/HtmlButton',
   component: HtmlButton,
   parameters: {
@@ -18,7 +19,11 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+} satisfies Meta<HtmlButtonProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
@@ -26,4 +31,4 @@ export const Default = {
     onClick: fn(),
     onKeyDown: fn(),
   },
-};
+} satisfies Story;

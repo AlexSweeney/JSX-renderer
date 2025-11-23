@@ -1,9 +1,10 @@
 import React from 'react';
-import { CharacterButton } from './CharacterButton';
+import { CharacterButton, CharacterButtonProps } from './CharacterButton';
 import { fn } from 'storybook/test';
 import { BUTTON_COLORS } from '../button';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Buttons/CharacterButton',
   component: CharacterButton,
   parameters: {
@@ -19,7 +20,10 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+} satisfies Meta<CharacterButtonProps>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
@@ -27,4 +31,4 @@ export const Default = {
     onClick: fn(),
     onKeyDown: fn(),
   },
-};
+} satisfies Story;

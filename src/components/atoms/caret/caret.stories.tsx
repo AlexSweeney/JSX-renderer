@@ -1,7 +1,8 @@
 import React from 'react';
-import { Caret } from './Caret';
+import { Caret, CaretProps } from './Caret';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Caret',
   component: Caret,
   parameters: {
@@ -10,7 +11,12 @@ export default {
   globals: {
     backgrounds: { value: 'dark' },
   },
-};
+  tags: ['autodocs'],
+} satisfies Meta<CaretProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Primary = {
   args: {
@@ -20,4 +26,4 @@ export const Primary = {
       <Caret />
     </div>
   )
-};
+} satisfies Story;

@@ -1,7 +1,8 @@
-import { Button, BUTTON_COLORS } from './Button';
+import { Button, BUTTON_COLORS, ButtonProps } from './Button';
 import { fn } from 'storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta = {
   title: 'Atoms/Buttons/Button',
   component: Button,
   parameters: {
@@ -17,7 +18,11 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+} satisfies Meta<ButtonProps>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
@@ -25,4 +30,4 @@ export const Default = {
     onClick: fn(),
     onKeyDown: fn(),
   },
-};
+} satisfies Story;
