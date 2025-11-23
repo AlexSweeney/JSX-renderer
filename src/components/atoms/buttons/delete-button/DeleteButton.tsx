@@ -1,20 +1,19 @@
-import React from 'react';
+import React from "react";
 import { BaseButton, BaseButtonProps } from "../base-button";
 
-export interface DeleteButtonProps extends Pick<BaseButtonProps,
-  'color' |
-  'onClick' |
-  'onKeyDown' |
-  'disabled'
-> { };
+export interface DeleteButtonProps
+  extends Pick<
+    BaseButtonProps,
+    "color" | "onClick" | "onKeyDown" | "disabled"
+  > {}
 
 export const DeleteButton = ({
-  color = 'secondary',
+  color = "secondary",
   onClick,
   onKeyDown,
   disabled = false,
 }: DeleteButtonProps) => {
-  const keyCode = 'Backspace';
+  const keyCode = "Backspace";
 
   return (
     <BaseButton
@@ -24,7 +23,7 @@ export const DeleteButton = ({
       keyCode={keyCode}
       disabled={disabled}
     >
-      {'delete'}
+      {"delete"}
     </BaseButton>
-  )
-}
+  );
+};

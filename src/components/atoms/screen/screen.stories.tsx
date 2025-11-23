@@ -1,22 +1,22 @@
-import React from 'react';
-import { Screen, ScreenProps } from './Screen';
-import { Meta, StoryObj } from '@storybook/react';
+import React from "react";
+import { Screen, ScreenProps } from "./Screen";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Atoms/Screen',
+  title: "Atoms/Screen",
   component: Screen,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   decorators: [
     (Story) => (
-      <div className='flex w-[300px] h-[100px]'>
+      <div className="flex w-[300px] h-[100px]">
         <Story />
       </div>
-    )
+    ),
   ],
   args: {
-    code: '',
+    code: "",
   },
 } satisfies Meta<ScreenProps>;
 
@@ -24,5 +24,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
-} satisfies Story;
+export const Primary = {} satisfies Story;

@@ -1,4 +1,4 @@
-import './styles.css';
+import "./styles.css";
 
 function transpile(nodeName, attributes, ...args) {
   const children = args.length ? [].concat(...args) : null;
@@ -8,12 +8,12 @@ function transpile(nodeName, attributes, ...args) {
 function parseJsxString(jsxString) {
   const jsxContent = /\{([^}]+)\}/g;
   const matches = [...jsxString.matchAll(regex)];
-  const contents = matches.map(match => match[1]);
+  const contents = matches.map((match) => match[1]);
 
   if (contents) {
-    console.log('contents', contents)
+    console.log("contents", contents);
   } else {
-    console.log('no match')
+    console.log("no match");
   }
 
   // return null;
@@ -26,7 +26,6 @@ const jsxString = '<div id="foo">Hello!</div>';
 
 // function makeVdom(node) {
 //   const textArray = node.split(' ');
-
 
 //   let jsx = (
 //     <div id="vdom">
@@ -42,7 +41,6 @@ const jsxString = '<div id="foo">Hello!</div>';
 
 function render(jsxString) {
   const parsedJsxString = parseJsxString(jsxString);
-
 
   // compile jsx to js
   // const vdom = makeVdom(node);

@@ -1,17 +1,17 @@
-import { Keyboard, KeyboardProps } from './Keyboard';
-import { fn } from 'storybook/test';
-import { Meta, StoryObj } from '@storybook/react';
+import { Keyboard, KeyboardProps } from "./Keyboard";
+import { fn } from "storybook/test";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Molecules/Keyboard',
+  title: "Molecules/Keyboard",
   component: Keyboard,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
     onClick: fn(),
     onKeyDown: fn(),
-    inputString: '',
+    inputString: "",
   },
 } satisfies Meta<KeyboardProps>;
 

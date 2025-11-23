@@ -1,10 +1,10 @@
 // ColorPalette.stories.jsx
-import React from 'react';
-import { theme } from './theme';
-import { Meta, StoryObj } from '@storybook/react';
+import React from "react";
+import { theme } from "./theme";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Design System/Colors',
+  title: "Design System/Colors",
 } satisfies Meta;
 
 export default meta;
@@ -25,5 +25,5 @@ export const Palette = {
         </div>
       ))}
     </div>
-  )
+  ),
 } satisfies Story;

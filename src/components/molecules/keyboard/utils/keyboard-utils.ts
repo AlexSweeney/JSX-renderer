@@ -1,38 +1,42 @@
 export const getIsOpeningTag = (string: string) => {
-  return !getIsClosingTag(string) && string.startsWith('<') && string.endsWith('>');
+  return (
+    !getIsClosingTag(string) && string.startsWith("<") && string.endsWith(">")
+  );
 };
 
 export const getIsClosingTag = (string: string) => {
-  return string.startsWith('</') && string.endsWith('>');
+  return string.startsWith("</") && string.endsWith(">");
 };
 
 export const getIsTag = (string: string) => {
   return getIsOpeningTag(string) || getIsClosingTag(string);
-}
+};
 
 export const getLastTag = (inputString: string) => {
   const parts = splitString(inputString);
   const reversedParts = parts.slice().reverse();
-  const lastTag = reversedParts.find(part => getIsOpeningTag(part) || getIsClosingTag(part));
+  const lastTag = reversedParts.find(
+    (part) => getIsOpeningTag(part) || getIsClosingTag(part),
+  );
 
   return lastTag || null;
 };
 
 export const splitString = (string: string) => {
-  let charArray = string.trim().split('');
+  let charArray = string.trim().split("");
 
   let result: string[] = [];
-  let htmlString = '';
+  let htmlString = "";
 
   charArray.forEach((char, i) => {
-    if (char === '>') {
+    if (char === ">") {
       htmlString += char;
       result.push(htmlString);
-      htmlString = '';
-    } else if (char === '<') {
+      htmlString = "";
+    } else if (char === "<") {
       if (htmlString) {
         result.push(htmlString);
-        htmlString = '';
+        htmlString = "";
       }
       htmlString += char;
     } else {
@@ -67,7 +71,7 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: false,
       renderDisabled: true,
       parseDisabled: true,
-      validClosingTag: lastTag?.replace('<', '</'),
+      validClosingTag: lastTag?.replace("<", "</"),
     },
     closingTag: {
       charactersDisabled: true,
@@ -83,8 +87,8 @@ export const getDisabledSections = (inputString: string) => {
       closingTagsDisabled: false,
       renderDisabled: true,
       parseDisabled: true,
-      validClosingTag: lastTag?.replace('<', '</'),
-    }
+      validClosingTag: lastTag?.replace("<", "</"),
+    },
   };
 
   let disabledSections;
@@ -99,17 +103,17 @@ export const getDisabledSections = (inputString: string) => {
     } else {
       disabledSections = options.character;
     }
-  };
+  }
 
   return disabledSections;
-}
+};
 
 export const deleteFromString = (inputString: string) => {
   if (!inputString) {
     return inputString;
   }
 
-  if (inputString.endsWith(' ')) {
+  if (inputString.endsWith(" ")) {
     return inputString.slice(0, -1);
   }
 
@@ -118,11 +122,11 @@ export const deleteFromString = (inputString: string) => {
   const lastPart = stringParts.at(-1)!;
 
   if (getIsTag(lastPart)) {
-    return stringParts.slice(0, -1).join('');
+    return stringParts.slice(0, -1).join("");
   }
 
   const trimmedLastPart = lastPart.slice(0, -1);
-  result = [...stringParts.slice(0, -1), trimmedLastPart].join('');
+  result = [...stringParts.slice(0, -1), trimmedLastPart].join("");
 
   return result;
-}
+};

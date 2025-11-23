@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react';
-import { BaseButton } from '../../atoms/buttons/base-button';
-import { getDisabledSections, getIsOpeningTag } from './utils/keyboard-utils';
-import { DeleteButton } from '../../atoms/buttons/delete-button';
-import { LetterButtonRow } from './parts/button-rows/letter-button-row';
+import React, { MouseEvent } from "react";
+import { BaseButton } from "../../atoms/buttons/base-button";
+import { getDisabledSections, getIsOpeningTag } from "./utils/keyboard-utils";
+import { DeleteButton } from "../../atoms/buttons/delete-button";
+import { LetterButtonRow } from "./parts/button-rows/letter-button-row";
 
 const HTML_TAGS = ["<h1>", "</h1>", "<p>", "</p>"];
 const TOP_LETTERS = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -10,64 +10,73 @@ const MIDDLE_LETTERS = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const BOTTOM_LETTERS = ["z", "x", "c", "v", "b", "n", "m"];
 
 const keyCodes = {
-  parse: 'ShiftLeft',
-  render: 'ShiftRight',
-  "<h1>": 'AltLeft',
-  "</h1>": 'MetaLeft',
-  "<p>": 'MetaRight',
-  "</p>": 'AltRight',
+  parse: "ShiftLeft",
+  render: "ShiftRight",
+  "<h1>": "AltLeft",
+  "</h1>": "MetaLeft",
+  "<p>": "MetaRight",
+  "</p>": "AltRight",
 };
 
 export interface KeyboardProps {
   onClick: (event: MouseEvent, value: string) => void;
-  onKeyDown: (event: WindowEventMap['keydown'], value: string) => void;
+  onKeyDown: (event: WindowEventMap["keydown"], value: string) => void;
   inputString?: string;
 }
 
 export const Keyboard = ({
   onClick,
   onKeyDown,
-  inputString = ''
+  inputString = "",
 }: KeyboardProps) => {
-  const buttonClass = 'mr-2 last:mr-0';
-  const { charactersDisabled, openingTagsDisabled, closingTagsDisabled, renderDisabled, parseDisabled, validClosingTag } = getDisabledSections(inputString);
+  const buttonClass = "mr-2 last:mr-0";
+  const {
+    charactersDisabled,
+    openingTagsDisabled,
+    closingTagsDisabled,
+    renderDisabled,
+    parseDisabled,
+    validClosingTag,
+  } = getDisabledSections(inputString);
 
   const renderHtmlButtons = () => {
     return (
       <div>
         {HTML_TAGS.map((tag) => {
-          const tagType = getIsOpeningTag(tag) ? 'opening' : 'closing';
+          const tagType = getIsOpeningTag(tag) ? "opening" : "closing";
 
           let isDisabled = false;
-          if (tagType === 'opening') {
+          if (tagType === "opening") {
             isDisabled = openingTagsDisabled;
           }
-          if (tagType === 'closing') {
+          if (tagType === "closing") {
             isDisabled = closingTagsDisabled || tag !== validClosingTag;
           }
 
-          return (<BaseButton
-            key={tag}
-            keyCode={keyCodes[tag as keyof typeof keyCodes] || ''}
-            variant="html"
-            text={tag}
-            className={buttonClass}
-            disabled={isDisabled}
-            onClick={(e) => onClick(e, tag)}
-            onKeyDown={(e) => onKeyDown(e, tag)}
-          />)
+          return (
+            <BaseButton
+              key={tag}
+              keyCode={keyCodes[tag as keyof typeof keyCodes] || ""}
+              variant="html"
+              text={tag}
+              className={buttonClass}
+              disabled={isDisabled}
+              onClick={(e) => onClick(e, tag)}
+              onKeyDown={(e) => onKeyDown(e, tag)}
+            />
+          );
         })}
       </div>
     );
   };
 
   return (
-    <div className='bg-surface p-2 grid grid-rows-5 gap-2'>
-      <div className='flex justify-between'>
+    <div className="bg-surface p-2 grid grid-rows-5 gap-2">
+      <div className="flex justify-between">
         {renderHtmlButtons()}
         <DeleteButton
-          onClick={(e) => onClick(e, 'delete')}
-          onKeyDown={(e) => onKeyDown(e, 'delete')}
+          onClick={(e) => onClick(e, "delete")}
+          onKeyDown={(e) => onKeyDown(e, "delete")}
         />
       </div>
       {/* <div>
@@ -107,4 +116,4 @@ export const Keyboard = ({
       </div> */}
     </div>
   );
-}
+};

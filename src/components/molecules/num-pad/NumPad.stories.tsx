@@ -1,12 +1,12 @@
-import { NumPad, NumPadProps } from './NumPad';
-import { fn } from 'storybook/test';
-import { Meta, StoryObj } from '@storybook/react';
+import { NumPad, NumPadProps } from "./NumPad";
+import { fn } from "storybook/test";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Molecules/NumPad',
+  title: "Molecules/NumPad",
   component: NumPad,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
     onClick: fn(),

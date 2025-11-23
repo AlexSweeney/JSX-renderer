@@ -1,11 +1,11 @@
-import { CodeInput } from './CodeInput';
-import { Meta, StoryObj } from '@storybook/react';
+import { CodeInput } from "./CodeInput";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Organisms/CodeInput',
+  title: "Organisms/CodeInput",
   component: CodeInput,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta;
 
@@ -13,5 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary = {
-} satisfies Story;
+export const Primary = {} satisfies Story;

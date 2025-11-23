@@ -1,21 +1,23 @@
-import React from 'react';
+import React from "react";
 import { BaseButton, BaseButtonProps } from "../base-button";
-import clsx from 'clsx';
+import clsx from "clsx";
 
-export interface CharacterButtonProps extends Pick<BaseButtonProps,
-  'color' |
-  'children' |
-  'className' |
-  'disabled' |
-  'onClick' |
-  'onKeyDown' |
-  'keyCode'
-> { };
+export interface CharacterButtonProps
+  extends Pick<
+    BaseButtonProps,
+    | "color"
+    | "children"
+    | "className"
+    | "disabled"
+    | "onClick"
+    | "onKeyDown"
+    | "keyCode"
+  > {}
 
 export const CharacterButton = ({
-  color = 'primary',
-  children = '',
-  className = '',
+  color = "primary",
+  children = "",
+  className = "",
   disabled,
   onClick,
   onKeyDown,
@@ -24,10 +26,10 @@ export const CharacterButton = ({
   let text = children;
 
   if (text.length > 1) {
-    text = text.split('')[0];
+    text = text.split("")[0];
   }
 
-  const sizeClass = 'w-[2.5rem] h-[2.5rem]';
+  const sizeClass = "w-[2.5rem] h-[2.5rem]";
   const buttonClass = clsx(sizeClass, className);
 
   return (
@@ -41,5 +43,5 @@ export const CharacterButton = ({
     >
       {text}
     </BaseButton>
-  )
+  );
 };

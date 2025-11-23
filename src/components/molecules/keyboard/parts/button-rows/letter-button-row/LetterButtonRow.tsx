@@ -1,11 +1,14 @@
-import React, { MouseEvent } from 'react';
-import { CharacterButton, CharacterButtonProps } from '../../../../../atoms/buttons/character-button/CharacterButton';
-import { buttonRowButtonStyle } from '../ButtonRow.style';
+import React, { MouseEvent } from "react";
+import {
+  CharacterButton,
+  CharacterButtonProps,
+} from "../../../../../atoms/buttons/character-button/CharacterButton";
+import { buttonRowButtonStyle } from "../ButtonRow.style";
 
 export interface LetterButtonRowProps {
   letters: string[];
-  onClick: CharacterButtonProps['onClick'];
-  onKeyDown: CharacterButtonProps['onKeyDown'];
+  onClick: CharacterButtonProps["onClick"];
+  onKeyDown: CharacterButtonProps["onKeyDown"];
   disabled: boolean;
 }
 
@@ -15,7 +18,10 @@ export const LetterButtonRow = ({
   onKeyDown,
   disabled,
 }: LetterButtonRowProps) => {
-  const handleClick = (event: MouseEvent<HTMLButtonElement>, letter: string) => {
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement>,
+    letter: string,
+  ) => {
     onClick && onClick(event, letter);
   };
 
@@ -23,7 +29,7 @@ export const LetterButtonRow = ({
     onKeyDown && onKeyDown(event, letter);
   };
 
-  return (letters.map(letter => (
+  return letters.map((letter) => (
     <CharacterButton
       className={buttonRowButtonStyle}
       onClick={(e) => handleClick(e, letter)}
@@ -32,5 +38,5 @@ export const LetterButtonRow = ({
     >
       {letter}
     </CharacterButton>
-  )));
-}
+  ));
+};

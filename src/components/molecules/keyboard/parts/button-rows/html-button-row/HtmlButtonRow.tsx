@@ -25,7 +25,8 @@ export const HtmlButtonRow = ({
           className={buttonRowButtonStyle}
           keyCode={buttonProp.keyCode}
           disabled={disabled}
-          key={buttonProp.keyCode}>
+          key={buttonProp.keyCode}
+        >
           {buttonProp.display}
         </HtmlButton>
       ))}

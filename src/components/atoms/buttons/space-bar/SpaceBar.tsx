@@ -2,22 +2,21 @@ import React from "react";
 import { BaseButton, BaseButtonProps } from "../base-button";
 import clsx from "clsx";
 
-export interface SpaceBarProps extends Pick<BaseButtonProps,
-  'className' |
-  'onClick' |
-  'onKeyDown' |
-  'color'
-> { };
+export interface SpaceBarProps
+  extends Pick<
+    BaseButtonProps,
+    "className" | "onClick" | "onKeyDown" | "color"
+  > {}
 
 export const SpaceBar = ({
-  className = '',
+  className = "",
   onClick,
   onKeyDown,
-  color = 'secondary'
+  color = "secondary",
 }: SpaceBarProps) => {
-  const sizeClass = 'w-[15rem] h-[2.5rem]';
+  const sizeClass = "w-[15rem] h-[2.5rem]";
   const spaceBarClass = clsx(sizeClass, className);
-  const keyCode = 'Space';
+  const keyCode = "Space";
 
   return (
     <BaseButton
@@ -27,5 +26,5 @@ export const SpaceBar = ({
       keyCode={keyCode}
       color={color}
     />
-  )
-}
+  );
+};

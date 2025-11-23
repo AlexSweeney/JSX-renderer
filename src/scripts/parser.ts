@@ -92,11 +92,11 @@ type TreeNode = {
 function getHtmlNodeName(string: string) {
   let isOpeningTag = false;
   let isFoundOpeningTag = false;
-  const charArray = string.split('');
-  let nodeName = '';
+  const charArray = string.split("");
+  let nodeName = "";
 
   charArray.forEach((char: string) => {
-    if (char === '>') {
+    if (char === ">") {
       isOpeningTag = false;
     }
 
@@ -104,22 +104,22 @@ function getHtmlNodeName(string: string) {
       nodeName += char.toUpperCase();
     }
 
-    if (char === '<' && !isFoundOpeningTag) {
+    if (char === "<" && !isFoundOpeningTag) {
       isFoundOpeningTag = true;
       isOpeningTag = true;
     }
-  })
+  });
 
   return nodeName;
 }
 
 function getHtmlNodeChildren(string: string) {
   let isText = false;
-  const charArray = string.split('');
-  let value = '';
+  const charArray = string.split("");
+  let value = "";
 
-  charArray.forEach(char => {
-    if (isText && char === '<') {
+  charArray.forEach((char) => {
+    if (isText && char === "<") {
       isText = false;
     }
 
@@ -127,27 +127,29 @@ function getHtmlNodeChildren(string: string) {
       value += char;
     }
 
-    if (char === '>') {
+    if (char === ">") {
       isText = true;
     }
-  })
+  });
 
-  return [{
-    nodeName: "#text",
-    value
-  }];
+  return [
+    {
+      nodeName: "#text",
+      value,
+    },
+  ];
 }
 
 export function splitTags(string: string) {
   let isHtml = false;
   let isClosingTag = false;
-  let charArray = string.split('');
+  let charArray = string.split("");
 
   let result: TreeNode[] = [];
-  let htmlString = '';
+  let htmlString = "";
 
   charArray.forEach((char, i) => {
-    if (char === '<') {
+    if (char === "<") {
       if (isHtml) {
         isClosingTag = true;
       } else {
@@ -159,20 +161,20 @@ export function splitTags(string: string) {
       htmlString += char;
     }
 
-    if (isClosingTag && char === '>') {
+    if (isClosingTag && char === ">") {
       const nodeName = getHtmlNodeName(htmlString);
       const nodeChildren = getHtmlNodeChildren(htmlString);
 
       result.push({
         nodeName: nodeName,
-        children: nodeChildren
-      })
+        children: nodeChildren,
+      });
 
       isHtml = false;
       isClosingTag = false;
-      htmlString = '';
+      htmlString = "";
     }
-  })
+  });
 
   return result;
 }

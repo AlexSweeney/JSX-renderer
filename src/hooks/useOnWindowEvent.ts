@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export const useOnWindowEvent = <E extends keyof WindowEventMap>(
   windowEvent: E,
-  callback: (event: WindowEventMap[E]) => void
+  callback: (event: WindowEventMap[E]) => void,
 ) => {
   useEffect(() => {
     const handleWindowEvent = (event: WindowEventMap[E]) => {

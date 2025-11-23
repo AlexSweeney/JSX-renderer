@@ -23,7 +23,8 @@ export const HtmlButton = ({
       onKeyDown={onKeyDown}
       className={buttonClass}
       disabled={disabled}
-      keyCode={keyCode}>
+      keyCode={keyCode}
+    >
       {children}
     </BaseButton>
   );

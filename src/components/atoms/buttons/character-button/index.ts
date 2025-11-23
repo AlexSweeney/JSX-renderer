@@ -1,5 +1,4 @@
-import { CharacterButton } from './CharacterButton';
-import type { CharacterButtonProps } from './CharacterButton';
+import { CharacterButton } from "./CharacterButton";
+import type { CharacterButtonProps } from "./CharacterButton";
 
 export { CharacterButton, CharacterButtonProps };
-

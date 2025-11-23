@@ -1,18 +1,18 @@
-import { BUTTON_COLORS } from '../base-button';
-import { DeleteButton, DeleteButtonProps } from './DeleteButton';
-import { fn } from 'storybook/test';
-import { Meta, StoryObj } from '@storybook/react';
+import { BUTTON_COLORS } from "../base-button";
+import { DeleteButton, DeleteButtonProps } from "./DeleteButton";
+import { fn } from "storybook/test";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Atoms/Buttons/DeleteButton',
+  title: "Atoms/Buttons/DeleteButton",
   component: DeleteButton,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     color: {
       options: BUTTON_COLORS,
-      control: { type: 'radio' },
+      control: { type: "radio" },
     },
   },
   args: {

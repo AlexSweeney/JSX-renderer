@@ -1,13 +1,19 @@
-import React, { MouseEvent, useState } from 'react';
-import { Button as HeadlessButton } from '@headlessui/react';
-import { useOnWindowEvent } from '../../../../hooks/useOnWindowEvent';
-import clsx from 'clsx';
-import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from './BaseButton.styles';
-import { getButtonClass, removeTargetFocus } from './BaseButton.utils';
+import React, { MouseEvent, useState } from "react";
+import { Button as HeadlessButton } from "@headlessui/react";
+import { useOnWindowEvent } from "../../../../hooks/useOnWindowEvent";
+import clsx from "clsx";
+import { BUTTON_STYLES, BUTTON_COLOR_STYLES } from "./BaseButton.styles";
+import { getButtonClass, removeTargetFocus } from "./BaseButton.utils";
 
-export const BUTTON_COLORS = ['contrast', 'primary', 'secondary'];
-export type ButtonColorType = 'contrast' | 'primary' | 'secondary';
-export type ButtonState = "default" | "hover" | "active" | "focus" | "disabled" | "keydown";
+export const BUTTON_COLORS = ["contrast", "primary", "secondary"];
+export type ButtonColorType = "contrast" | "primary" | "secondary";
+export type ButtonState =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "keydown";
 
 export interface BaseButtonProps {
   children?: string;
@@ -21,8 +27,8 @@ export interface BaseButtonProps {
 
 export const BaseButton = ({
   children,
-  className = '',
-  color = 'primary',
+  className = "",
+  color = "primary",
   disabled,
   keyCode,
   onClick,
@@ -54,21 +60,21 @@ export const BaseButton = ({
     removeTargetFocus(event);
   };
 
-  const handleKeyDown = (event: WindowEventMap['keydown']) => {
+  const handleKeyDown = (event: WindowEventMap["keydown"]) => {
     if (isKeyForButton(event)) {
-      setIsKeyDown(true)
+      setIsKeyDown(true);
       !disabled && onKeyDown && onKeyDown(event);
     }
   };
 
-  const handleKeyUp = (event: WindowEventMap['keyup']) => {
+  const handleKeyUp = (event: WindowEventMap["keyup"]) => {
     if (isKeyForButton(event)) {
-      setIsKeyDown(false)
+      setIsKeyDown(false);
     }
   };
 
-  useOnWindowEvent('keydown', handleKeyDown);
-  useOnWindowEvent('keyup', handleKeyUp);
+  useOnWindowEvent("keydown", handleKeyDown);
+  useOnWindowEvent("keyup", handleKeyUp);
 
   return (
     <HeadlessButton
@@ -79,5 +85,5 @@ export const BaseButton = ({
     >
       {children}
     </HeadlessButton>
-  )
-}
+  );
+};

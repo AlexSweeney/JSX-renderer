@@ -1,6 +1,6 @@
-import '../src/styles.css';
-import type { Preview } from '@storybook/react';
-import { theme } from '../src/design-system/theme';
+import "../src/styles.css";
+import type { Preview } from "@storybook/react";
+import { theme } from "../src/design-system/theme";
 
 const preview: Preview = {
   parameters: {
@@ -12,14 +12,14 @@ const preview: Preview = {
     },
     backgrounds: {
       options: {
-        dark: { name: 'Dark', value: theme.colors.background },
+        dark: { name: "Dark", value: theme.colors.background },
       },
     },
   },
   initialGlobals: {
-    backgrounds: { value: 'dark' },
+    backgrounds: { value: "dark" },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default preview;

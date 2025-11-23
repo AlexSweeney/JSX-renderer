@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import { BaseButton, BaseButtonProps } from "../base-button";
-import clsx from 'clsx';
+import clsx from "clsx";
 
-export interface ActionButtonProps extends BaseButtonProps { };
+export interface ActionButtonProps extends BaseButtonProps {}
 
 export const ActionButton = ({
-  color = 'contrast',
+  color = "contrast",
   onClick,
   onKeyDown,
   disabled,
   className,
-  children
+  children,
 }: ActionButtonProps) => {
-  const sizeClass = 'min-w-[4rem] h-[2.5rem]';
+  const sizeClass = "min-w-[4rem] h-[2.5rem]";
   const buttonClass = clsx(sizeClass, className);
 
   return (
@@ -25,5 +25,5 @@ export const ActionButton = ({
     >
       {children}
     </BaseButton>
-  )
+  );
 };

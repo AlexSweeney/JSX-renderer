@@ -1,30 +1,29 @@
-import { BUTTON_COLORS } from '../base-button';
-import { HtmlButton, HtmlButtonProps } from './HtmlButton';
-import { fn } from 'storybook/test';
-import { Meta, StoryObj } from '@storybook/react';
+import { BUTTON_COLORS } from "../base-button";
+import { HtmlButton, HtmlButtonProps } from "./HtmlButton";
+import { fn } from "storybook/test";
+import { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: 'Atoms/Buttons/HtmlButton',
+  title: "Atoms/Buttons/HtmlButton",
   component: HtmlButton,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     color: {
       options: BUTTON_COLORS,
-      control: { type: 'radio' },
+      control: { type: "radio" },
     },
   },
   args: {
     onClick: fn(),
     onKeyDown: fn(),
-    children: '<p>',
-  }
+    children: "<p>",
+  },
 } satisfies Meta<HtmlButtonProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-} satisfies Story;
+export const Default = {} satisfies Story;
