@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from "react";
-import { Keyboard } from "../../molecules/keyboard/keyboard";
+import { Keyboard } from "../../molecules/keyboard";
 import { Screen } from "../../atoms/screen/Screen";
 import { deleteFromString } from "../../molecules/keyboard/utils/keyboard-utils";
 

@@ -1,4 +1,4 @@
-import { Keyboard, KeyboardProps } from './keyboard';
+import { Keyboard, KeyboardProps } from './Keyboard';
 import { fn } from 'storybook/test';
 import { Meta, StoryObj } from '@storybook/react';
 
