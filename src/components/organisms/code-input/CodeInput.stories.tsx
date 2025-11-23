@@ -10,7 +10,6 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' },
   },
-  tags: ['autodocs'],
 } satisfies Meta;
 
 export default meta;

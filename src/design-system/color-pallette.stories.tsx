@@ -5,7 +5,6 @@ import { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Design System/Colors',
-  tags: ['autodocs'],
 } satisfies Meta;
 
 export default meta;

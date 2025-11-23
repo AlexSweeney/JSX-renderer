@@ -11,7 +11,6 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' },
   },
-  tags: ['autodocs'],
   args: {
     onClick: fn(),
     onKeyDown: fn(),

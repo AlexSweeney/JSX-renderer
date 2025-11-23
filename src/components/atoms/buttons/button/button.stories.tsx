@@ -11,7 +11,6 @@ const meta = {
   globals: {
     backgrounds: { value: 'dark' },
   },
-  tags: ['autodocs'],
   argTypes: {
     color: {
       options: BUTTON_COLORS,
